@@ -397,6 +397,10 @@ namespace DURPSBot
             }
 
         }
+        public decimal BasicSpeed()
+        {
+            return (MaxHealth + TotalDexterity()) / 2;
+        }
         public long TotalDamage()
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits

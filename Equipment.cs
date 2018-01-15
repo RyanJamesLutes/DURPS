@@ -111,7 +111,7 @@ namespace DURPSBot
         {
             return prefix + " " + Name + " " + suffix;
         }
-        public double TotaWeight()
+        public decimal TotaWeight()
         {
             return Weight + (Weight * Prefix.WeightMultiplier - Weight) + (Weight * Suffix.WeightMultiplier - Weight);
         }

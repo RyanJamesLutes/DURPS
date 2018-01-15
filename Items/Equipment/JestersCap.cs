@@ -14,6 +14,7 @@ namespace DURPSBot.Items.Equipment
             DamageResistance = 1;
             Description = "A bright, multicolored cap adorned with bells.";
             TechLevel = 0;
+            RequiredClass = "Fool";
             ItemID = GenerateItemID();
         }
     }

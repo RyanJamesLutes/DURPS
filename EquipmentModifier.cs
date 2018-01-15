@@ -18,8 +18,8 @@
         private long requiredLuck = 0;
         private long requiredFate = 0;
         private long damage = 0;
-        private double weightMultiplier = 0;
-        private double priceMultiplier = 0;
+        private decimal weightMultiplier = 0;
+        private decimal priceMultiplier = 0;
         private long damageResistance = 0;
         private long accuracy = 0;
         private long rateOfFire = 0;
@@ -35,8 +35,8 @@
         public long Intelligence { get => intelligence; set => intelligence = value; }
         public long Dexterity { get => dexterity; set => dexterity = value; }
         public long Damage { get => damage; set => damage = value; }
-        public double WeightMultiplier { get => weightMultiplier; set => weightMultiplier = value; }
-        public double PriceMultiplier { get => priceMultiplier; set => priceMultiplier = value; }
+        public decimal WeightMultiplier { get => weightMultiplier; set => weightMultiplier = value; }
+        public decimal PriceMultiplier { get => priceMultiplier; set => priceMultiplier = value; }
         public long DamageResistance { get => damageResistance; set => damageResistance = value; }
         public long Luck { get => luck; set => luck = value; }
         public long Fate { get => fate; set => fate = value; }

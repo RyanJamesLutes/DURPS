@@ -25,7 +25,7 @@ namespace DURPSBot
             _commands = new CommandService();
 
             // TODO: Avoid hard coding your token. Use an external source instead in your code.
-            string token = "MzgwODQ3MDUzMDQxMDQxNDA5.DPAxUQ.2rnm511brxxDu8JGG4x9m7bu2bo";
+            string token = "";
 
             _services = new ServiceCollection()
                 .AddSingleton(_client)
