@@ -20,7 +20,7 @@ namespace DURPSBot.Items.Equipment
             TechLevel = 1;
             ItemID = GenerateItemID();
         }
-        public void Action(Entity owner, Entity target)
+        public void BattleAction(Entity owner, Entity target)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))
@@ -30,7 +30,7 @@ namespace DURPSBot.Items.Equipment
                     break;
             }
         }
-        public void Action(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
+        public void BattleAction(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))
@@ -43,7 +43,7 @@ namespace DURPSBot.Items.Equipment
         public void Thrust(Entity owner, Entity target)
         {
             Random rng = new Random();
-            long defactoDamage = (owner.BasicThrust() + Damage) - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            int defactoDamage = (owner.BasicThrust() + Damage) - (target.DamageResistance + target.EquippedBody.DamageResistance);
             if (defactoDamage < 0)
             {
                 defactoDamage = 0;
@@ -54,7 +54,7 @@ namespace DURPSBot.Items.Equipment
         public void Thrust(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
         {
             Random rng = new Random();
-            long defactoDamage = (owner.BasicThrust() + Damage) - (target.DamageResistance + bodyPart.DamageResistance);
+            int defactoDamage = (owner.BasicThrust() + Damage) - (target.DamageResistance + bodyPart.DamageResistance);
             if (defactoDamage < 0)
             {
                 defactoDamage = 0;

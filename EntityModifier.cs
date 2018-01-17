@@ -10,19 +10,19 @@ namespace DURPSBot
     class EntityModifier
     {
         private string name;
-        private long level;
-        private long health;
-        private long strength;
-        private long intelligence;
-        private long dexterity;
-        private long defenseBonus;
+        private int level;
+        private int health;
+        private int strength;
+        private int intelligence;
+        private int dexterity;
+        private int defenseBonus;
 
         public string Name { get => name; set => name = value; }
-        public long Level { get => level; set => level = value; }
-        public long Health { get => health; set => health = value; }
-        public long Strength { get => strength; set => strength = value; }
-        public long Intelligence { get => intelligence; set => intelligence = value; }
-        public long Dexterity { get => dexterity; set => dexterity = value; }
-        public long DefenseBonus { get => defenseBonus; set => defenseBonus = value; }
+        public int Level { get => level; set => level = value; }
+        public int Health { get => health; set => health = value; }
+        public int Strength { get => strength; set => strength = value; }
+        public int Intelligence { get => intelligence; set => intelligence = value; }
+        public int Dexterity { get => dexterity; set => dexterity = value; }
+        public int DefenseBonus { get => defenseBonus; set => defenseBonus = value; }
     }
 }

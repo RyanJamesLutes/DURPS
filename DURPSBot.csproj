@@ -132,6 +132,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Battle.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Entity.cs" />
@@ -142,6 +143,10 @@
     <Compile Include="EquipmentPrefix.cs" />
     <Compile Include="EquipmentSuffix.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="Items\Equipment\LongStaff.cs" />
+    <Compile Include="Items\Equipment\Robes.cs" />
+    <Compile Include="Items\Equipment\Cloak.cs" />
+    <Compile Include="Items\Equipment\Sandals.cs" />
     <Compile Include="Items\Equipment\Shortsword.cs" />
     <Compile Include="Items\Equipment\Dagger.cs" />
     <Compile Include="Items\Equipment\Empty.cs" />

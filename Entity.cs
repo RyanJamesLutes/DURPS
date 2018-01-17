@@ -9,16 +9,16 @@ namespace DURPSBot
         private EntityPrefix prefix;
         private string name;
         private EntitySuffix suffix;
-        private long level;
+        private int level;
         private long experience;
-        private long currentHealth;
-        private long maxHealth;
-        private long strength;
-        private long intelligence;
-        private long dexterity;
-        private long luck;
-        private long fate;
-        private long damageResistance;
+        private int currentHealth;
+        private int maxHealth;
+        private int strength;
+        private int intelligence;
+        private int dexterity;
+        private int luck;
+        private int fate;
+        private int damageResistance;
         private List<Trait> traits;
         private List<StatusEffect> statusEffect;
         private Equipment equippedHead = new Items.Equipment.Empty();
@@ -37,15 +37,16 @@ namespace DURPSBot
         internal EntityPrefix Prefix { get => prefix; set => prefix = value; }
         public string Name { get => name; set => name = value; }
         internal EntitySuffix Suffix { get => suffix; set => suffix = value; }
-        public long Level { get => level; set => level = value; }
+        public int Level { get => level; set => level = value; }
         public long Experience { get => experience; set => experience = value; }
-        public long CurrentHealth { get => currentHealth; set => currentHealth = value; }
-        public long MaxHealth { get => maxHealth; set => maxHealth = value; }
-        public long Strength { get => strength; set => strength = value; }
-        public long Intelligence { get => intelligence; set => intelligence = value; }
-        public long Dexterity { get => dexterity; set => dexterity = value; }
-        public long Luck { get => luck; set => luck = value; }
-        public long Fate { get => fate; set => fate = value; }
+        public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
+        public int MaxHealth { get => maxHealth; set => maxHealth = value; }
+        public int Strength { get => strength; set => strength = value; }
+        public int Intelligence { get => intelligence; set => intelligence = value; }
+        public int Dexterity { get => dexterity; set => dexterity = value; }
+        public int Luck { get => luck; set => luck = value; }
+        public int Fate { get => fate; set => fate = value; }
+        public int DamageResistance { get => damageResistance; set => damageResistance = value; }
         internal List<Trait> Traits { get => traits; set => traits = value; }
         internal List<StatusEffect> StatusEffect { get => statusEffect; set => statusEffect = value; }
 
@@ -60,32 +61,31 @@ namespace DURPSBot
         public Equipment EquippedFeet { get => equippedFeet; set => equippedFeet = value; }
         public List<Item> Inventory { get => inventory; set => inventory = value; }
         public long Money { get => money; set => money = value; }
-        public long DamageResistance { get => damageResistance; set => damageResistance = value; }
 
         public string FullName()
         {
             return Prefix.Name + " " + name + " " + Suffix.Name;
         }
-        public long TotalStrength()
+        public int TotalStrength()
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
             return Strength + EquippedHead.TotalStrength() + EquippedBody.TotalStrength() + EquippedArms.TotalStrength() + EquippedGloves.TotalStrength() + EquippedMainHand.TotalStrength() + EquippedOffHand.TotalStrength() + EquippedLegs.TotalStrength() + EquippedFeet.TotalStrength();
         }
-        public long TotalIntelligence()
+        public int TotalIntelligence()
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
             return Intelligence + EquippedHead.TotalIntelligence() + EquippedBody.TotalIntelligence() + EquippedArms.TotalIntelligence() + EquippedGloves.TotalIntelligence() + EquippedMainHand.TotalIntelligence() + EquippedOffHand.TotalIntelligence() + EquippedLegs.TotalIntelligence() + EquippedFeet.TotalIntelligence();
         }
-        public long TotalDexterity()
+        public int TotalDexterity()
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
             return Dexterity + EquippedHead.TotalDexterity() + EquippedBody.TotalDexterity() + EquippedArms.TotalDexterity() + EquippedGloves.TotalDexterity() + EquippedMainHand.TotalDexterity() + EquippedOffHand.TotalDexterity() + EquippedLegs.TotalDexterity() + EquippedFeet.TotalDexterity();
         }
-        public long BasicLift()
+        public int BasicLift()
         {
-            return (long)Math.Pow(TotalStrength(), 2) / 5;
+            return (int)Math.Pow(TotalStrength(), 2) / 5;
         }
-        public long BasicThrust()
+        public int BasicThrust()
         {
             Dice dice = new Dice();
             if (TotalStrength() >= 1 && TotalStrength() <= 2)
@@ -223,7 +223,7 @@ namespace DURPSBot
             }
 
         }
-        public long BasicSwing()
+        public int BasicSwing()
         {
             Dice dice = new Dice();
             if (TotalStrength() >= 1 && TotalStrength() <= 2)
@@ -397,18 +397,18 @@ namespace DURPSBot
             }
 
         }
-        public decimal BasicSpeed()
+        public double BasicSpeed()
         {
             return (MaxHealth + TotalDexterity()) / 2;
         }
-        public long TotalDamage()
+        public int TotalDamage()
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
             return EquippedHead.TotalDamage() + EquippedBody.TotalDamage() + EquippedArms.TotalDamage() + EquippedGloves.TotalDamage() + EquippedMainHand.TotalDamage() + EquippedOffHand.TotalDamage() + EquippedLegs.TotalDamage() + EquippedFeet.TotalDamage();
         }
         public void UnarmedAttack(Entity target)
         {
-            long defactoDamage = BasicThrust() - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            int defactoDamage = BasicThrust() - (target.DamageResistance + target.EquippedBody.DamageResistance);
             if (defactoDamage < 0)
             {
                 defactoDamage = 0;
@@ -418,7 +418,7 @@ namespace DURPSBot
         }
         public void UnarmedAttack(Entity target, Equipment bodyPart)
         {
-            long defactoDamage = BasicThrust() - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            int defactoDamage = BasicThrust() - (target.DamageResistance + target.EquippedBody.DamageResistance);
             if (defactoDamage < 0)
             {
                 defactoDamage = 0;

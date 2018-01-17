@@ -6,44 +6,44 @@
         /// <summary> Common, Uncommon, Rare, Epic, Legendary</summary>
         ///
         private byte rarity;
-        private long requiredLevel = 0;
-        private long requiredStrength = 0;
-        private long requiredIntelligence = 0;
-        private long requiredDexterity = 0;
-        private long strength = 0;
-        private long intelligence = 0;
-        private long dexterity = 0;
-        private long luck = 0;
-        private long fate = 0;
-        private long requiredLuck = 0;
-        private long requiredFate = 0;
-        private long damage = 0;
-        private decimal weightMultiplier = 0;
-        private decimal priceMultiplier = 0;
-        private long damageResistance = 0;
-        private long accuracy = 0;
-        private long rateOfFire = 0;
-        private long shots = 0;
+        private int requiredLevel = 0;
+        private int requiredStrength = 0;
+        private int requiredIntelligence = 0;
+        private int requiredDexterity = 0;
+        private int strength = 0;
+        private int intelligence = 0;
+        private int dexterity = 0;
+        private int luck = 0;
+        private int fate = 0;
+        private int requiredLuck = 0;
+        private int requiredFate = 0;
+        private int damage = 0;
+        private double weightMultiplier = 0;
+        private double priceMultiplier = 0;
+        private int damageResistance = 0;
+        private int accuracy = 0;
+        private int rateOfFire = 0;
+        private int shots = 0;
 
         public string Name { get => name; set => name = value; }
         public byte Rarity { get => rarity; set => rarity = value; }
-        public long RequiredLevel { get => requiredLevel; set => requiredLevel = value; }
-        public long RequiredStrength { get => requiredStrength; set => requiredStrength = value; }
-        public long RequiredIntelligence { get => requiredIntelligence; set => requiredIntelligence = value; }
-        public long RequiredDexterity { get => requiredDexterity; set => requiredDexterity = value; }
-        public long Strength { get => strength; set => strength = value; }
-        public long Intelligence { get => intelligence; set => intelligence = value; }
-        public long Dexterity { get => dexterity; set => dexterity = value; }
-        public long Damage { get => damage; set => damage = value; }
-        public decimal WeightMultiplier { get => weightMultiplier; set => weightMultiplier = value; }
-        public decimal PriceMultiplier { get => priceMultiplier; set => priceMultiplier = value; }
-        public long DamageResistance { get => damageResistance; set => damageResistance = value; }
-        public long Luck { get => luck; set => luck = value; }
-        public long Fate { get => fate; set => fate = value; }
-        public long Shots { get => shots; set => shots = value; }
-        public long RateOfFire { get => rateOfFire; set => rateOfFire = value; }
-        public long Accuracy { get => accuracy; set => accuracy = value; }
-        public long RequiredLuck { get => requiredLuck; set => requiredLuck = value; }
-        public long RequiredFate { get => requiredFate; set => requiredFate = value; }
+        public int RequiredLevel { get => requiredLevel; set => requiredLevel = value; }
+        public int RequiredStrength { get => requiredStrength; set => requiredStrength = value; }
+        public int RequiredIntelligence { get => requiredIntelligence; set => requiredIntelligence = value; }
+        public int RequiredDexterity { get => requiredDexterity; set => requiredDexterity = value; }
+        public int Strength { get => strength; set => strength = value; }
+        public int Intelligence { get => intelligence; set => intelligence = value; }
+        public int Dexterity { get => dexterity; set => dexterity = value; }
+        public int Damage { get => damage; set => damage = value; }
+        public double WeightMultiplier { get => weightMultiplier; set => weightMultiplier = value; }
+        public double PriceMultiplier { get => priceMultiplier; set => priceMultiplier = value; }
+        public int DamageResistance { get => damageResistance; set => damageResistance = value; }
+        public int Luck { get => luck; set => luck = value; }
+        public int Fate { get => fate; set => fate = value; }
+        public int Shots { get => shots; set => shots = value; }
+        public int RateOfFire { get => rateOfFire; set => rateOfFire = value; }
+        public int Accuracy { get => accuracy; set => accuracy = value; }
+        public int RequiredLuck { get => requiredLuck; set => requiredLuck = value; }
+        public int RequiredFate { get => requiredFate; set => requiredFate = value; }
     }
 }

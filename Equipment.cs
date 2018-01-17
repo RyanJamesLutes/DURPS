@@ -19,24 +19,24 @@ namespace DURPSBot
         private bool equipsToLegs = false;
         private bool equipsToFeet = false;
         private string requiredClass = "Any";
-        private long requiredLevel = 0;
-        private long requiredStrength = 0;
-        private long requiredIntelligence = 0;
-        private long requiredDexterity = 0;
-        private long requiredLuck = 0;
-        private long requiredFate = 0;
-        private long strength = 0;
-        private long intelligence = 0;
-        private long dexterity = 0;
-        private long luck = 0;
-        private long fate = 0;
-        private long damage = 0;
-        private long parry = 0;
-        private long damageResistance = 0;
-        private long accuracy = 0;
-        private long rateOfFire = 0;
-        private long shots = 0;
-        private long reach = 0;
+        private int requiredLevel = 0;
+        private int requiredStrength = 0;
+        private int requiredIntelligence = 0;
+        private int requiredDexterity = 0;
+        private int requiredLuck = 0;
+        private int requiredFate = 0;
+        private int strength = 0;
+        private int intelligence = 0;
+        private int dexterity = 0;
+        private int luck = 0;
+        private int fate = 0;
+        private int damage = 0;
+        private int parry = 0;
+        private int damageResistance = 0;
+        private int accuracy = 0;
+        private int rateOfFire = 0;
+        private int shots = 0;
+        private int reach = 0;
         private byte techLevel = 0;
         private bool canParry = false;
 
@@ -54,56 +54,56 @@ namespace DURPSBot
         public bool EquipsToLegs { get => equipsToLegs; set => equipsToLegs = value; }
         public bool EquipsToFeet { get => equipsToFeet; set => equipsToFeet = value; }
         public string RequiredClass { get => requiredClass; set => requiredClass = value; }
-        public long RequiredLevel { get => requiredLevel; set => requiredLevel = value; } // Minimum level required to equip item.
-        public long RequiredStrength { get => requiredStrength; set => requiredStrength = value; }
-        public long RequiredIntelligence { get => requiredIntelligence; set => requiredIntelligence = value; }
-        public long RequiredDexterity { get => requiredDexterity; set => requiredDexterity = value; }
-        public long Strength { get => strength; set => strength = value; }
-        public long Intelligence { get => intelligence; set => intelligence = value; }
-        public long Dexterity { get => dexterity; set => dexterity = value; }
-        public long Parry { get => parry; set => parry = value; }
-        public long DamageResistance { get => damageResistance; set => damageResistance = value; }
-        public long Accuracy { get => accuracy; set => accuracy = value; }
-        public long RateOfFire { get => rateOfFire; set => rateOfFire = value; }
-        public long Shots { get => shots; set => shots = value; }
-        public long Damage { get => Damage; set => Damage = value; }
-        public long Luck { get => luck; set => luck = value; }
-        public long Fate { get => fate; set => fate = value; }
-        public long RequiredLuck { get => requiredLuck; set => requiredLuck = value; }
-        public long RequiredFate { get => requiredFate; set => requiredFate = value; }
-        public long Reach { get => reach; set => reach = value; }
+        public int RequiredLevel { get => requiredLevel; set => requiredLevel = value; } // Minimum level required to equip item.
+        public int RequiredStrength { get => requiredStrength; set => requiredStrength = value; }
+        public int RequiredIntelligence { get => requiredIntelligence; set => requiredIntelligence = value; }
+        public int RequiredDexterity { get => requiredDexterity; set => requiredDexterity = value; }
+        public int Strength { get => strength; set => strength = value; }
+        public int Intelligence { get => intelligence; set => intelligence = value; }
+        public int Dexterity { get => dexterity; set => dexterity = value; }
+        public int Parry { get => parry; set => parry = value; }
+        public int DamageResistance { get => damageResistance; set => damageResistance = value; }
+        public int Accuracy { get => accuracy; set => accuracy = value; }
+        public int RateOfFire { get => rateOfFire; set => rateOfFire = value; }
+        public int Shots { get => shots; set => shots = value; }
+        public int Damage { get => Damage; set => Damage = value; }
+        public int Luck { get => luck; set => luck = value; }
+        public int Fate { get => fate; set => fate = value; }
+        public int RequiredLuck { get => requiredLuck; set => requiredLuck = value; }
+        public int RequiredFate { get => requiredFate; set => requiredFate = value; }
+        public int Reach { get => reach; set => reach = value; }
         public byte TechLevel { get => techLevel; set => techLevel = value; }
         public bool CanParry { get => canParry; set => canParry = value; }
 
-        public long TotalRequiredLevel()
+        public int TotalRequiredLevel()
         {
             return RequiredLevel + prefix.RequiredLevel + suffix.RequiredLevel;
         }
-        public long TotalRequiredStrength()
+        public int TotalRequiredStrength()
         {
             return requiredStrength + prefix.RequiredStrength + suffix.RequiredStrength;
         }
-        public long TotalRequiredIntelligence()
+        public int TotalRequiredIntelligence()
         {
             return requiredIntelligence + prefix.RequiredIntelligence + suffix.RequiredIntelligence;
         }
-        public long TotalRequiredDexterity()
+        public int TotalRequiredDexterity()
         {
             return requiredDexterity + prefix.RequiredDexterity + suffix.RequiredDexterity;
         }
-        public long TotalStrength()
+        public int TotalStrength()
         {
             return Strength + prefix.Strength + suffix.Strength;
         }
-        public long TotalIntelligence()
+        public int TotalIntelligence()
         {
             return Intelligence + prefix.Intelligence + suffix.Intelligence;
         }
-        public long TotalDexterity()
+        public int TotalDexterity()
         {
             return dexterity + prefix.Dexterity + suffix.Dexterity;
         }
-        public long TotalDamageResistance()
+        public int TotalDamageResistance()
         {
             return DamageResistance + prefix.DamageResistance + suffix.DamageResistance;
         }
@@ -111,15 +111,15 @@ namespace DURPSBot
         {
             return prefix + " " + Name + " " + suffix;
         }
-        public decimal TotaWeight()
+        public double TotaWeight()
         {
             return Weight + (Weight * Prefix.WeightMultiplier - Weight) + (Weight * Suffix.WeightMultiplier - Weight);
         }
-        public long TotalPrice()
+        public int TotalPrice()
         {
-            return Price + (Price * (long)Math.Round(Price * Prefix.PriceMultiplier) - Price) + (Price * (long)Math.Round(Price * Suffix.PriceMultiplier) - Price);
+            return Price + (int)((Price * Prefix.PriceMultiplier - Price) + (Price * Suffix.PriceMultiplier - Price));
         }
-        public long TotalDamage()
+        public int TotalDamage()
         {
             return Damage + prefix.Damage + suffix.Damage;
         }

@@ -19,7 +19,7 @@ namespace DURPSBot.Monsters
             MaxHealth = 9;
         }
 
-        public void Action(Entity target)
+        public void BattleAction(Entity target)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))
@@ -29,7 +29,7 @@ namespace DURPSBot.Monsters
                     break;
             }
         }
-        public void Action(Entity target, Equipment bodyPart)
+        public void BattleAction(Entity target, Equipment bodyPart)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))
@@ -42,7 +42,7 @@ namespace DURPSBot.Monsters
         public void Bite(Entity target)
         {
             Random rng = new Random();
-            long defactoDamage = (rng.Next(6) - 1) - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            int defactoDamage = (rng.Next(6) - 1) - (target.DamageResistance + target.EquippedBody.DamageResistance);
             if (defactoDamage < 0)
             {
                 defactoDamage = 0;
@@ -53,7 +53,7 @@ namespace DURPSBot.Monsters
         public void Bite(Entity target, Equipment bodyPart)
         {
             Random rng = new Random();
-            long defactoDamage = (rng.Next(6) - 1) - (target.DamageResistance + bodyPart.DamageResistance);
+            int defactoDamage = (rng.Next(6) - 1) - (target.DamageResistance + bodyPart.DamageResistance);
             if (defactoDamage < 0)
             {
                 defactoDamage = 0;

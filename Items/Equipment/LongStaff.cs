@@ -3,21 +3,23 @@
 namespace DURPSBot.Items.Equipment
 {
     [Serializable]
-    class Mace : DURPSBot.Equipment
+    class LongStaff : DURPSBot.Equipment
     {
         // Page 65 of Low-Tech
-        public Mace()
+        public LongStaff()
         {
-            Name = "Mace";
+            Name = "Long Staff";
             IsWeapon = true;
             EquipsToMainHand = true;
-            Price = 50;
-            Weight = 5;
-            Description = "An unbalanced, one-handed war club with a large crushing head.";
-            RequiredStrength = 12;
-            Damage = 3;
-            Reach = 1;
-            TechLevel = 2;
+            IsTwoHanded = true;
+            Price = 15;
+            Weight = 4;
+            Description = "";
+            RequiredStrength = 10;
+            Damage = 2;
+            Reach = 3;
+            Parry = 2;
+            TechLevel = 0;
             ItemID = GenerateItemID();
         }
         public void BattleAction(Entity owner, Entity target)

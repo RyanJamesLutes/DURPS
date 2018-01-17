@@ -7,12 +7,12 @@ namespace DURPSBot
     {
         private string userID;
         private string characterClass;
-        private ulong traitPoints;
+        private uint traitPoints;
         private string fileVersion;
-        private long killedGiantRats = 0;
+        private int killedGiantRats = 0;
 
         public string UserID { get => userID; set => userID = value; }
-        public ulong TraitPoints { get => traitPoints; set => traitPoints = value; }
+        public uint TraitPoints { get => traitPoints; set => traitPoints = value; }
         public string FileVersion { get => fileVersion; set => fileVersion = value; }
 
         public PlayerCharacter(string cc)
@@ -53,6 +53,7 @@ namespace DURPSBot
                 Luck = rng.Next(1, 14);
                 Fate = rng.Next(1, 14);
 
+                EquippedBody = new Items.Equipment.Cloak();
                 EquippedMainHand = new Items.Equipment.Dagger();
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
@@ -63,6 +64,9 @@ namespace DURPSBot
                 Intelligence = rng.Next(10, 14);
                 Luck = rng.Next(1, 14);
                 Fate = rng.Next(1, 14);
+
+                EquippedBody = new Items.Equipment.Robes();
+                EquippedFeet = new Items.Equipment.Sandals();
             }
             else if (characterClass == "Fool")
             {

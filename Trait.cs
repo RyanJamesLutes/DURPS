@@ -5,6 +5,6 @@ namespace DURPSBot
     [Serializable]
     class Trait : EntityModifier
     {
-        public long pointCost = 0;
+        public int pointCost = 0;
     }
 }

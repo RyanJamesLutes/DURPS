@@ -9,20 +9,20 @@ namespace DURPSBot
     class Item
     {
         private string name;
-        private decimal weight;
-        private long price;
+        private double weight;
+        private int price;
         private string itemID;
         private string description;
         private bool dropsOnDeath;
-        private decimal dropPercent;
+        private double dropPercent;
 
         public string Name { get => name; set => name = value; }
-        public decimal Weight { get => weight; set => weight = value; }
-        public long Price { get => price; set => price = value; }
+        public double Weight { get => weight; set => weight = value; }
+        public int Price { get => price; set => price = value; }
         public string ItemID { get => itemID; set => itemID = value; }
         public string Description { get => description; set => description = value; }
         public bool DropsOnDeath { get => dropsOnDeath; set => dropsOnDeath = value; }
-        public decimal DropPercent { get => dropPercent; set => dropPercent = value; }
+        public double DropPercent { get => dropPercent; set => dropPercent = value; }
 
         public string GenerateItemID()
         {

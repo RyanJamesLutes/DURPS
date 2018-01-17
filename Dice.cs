@@ -18,9 +18,9 @@ namespace DURPSBot
             return results;
         }
 
-        public long RollTotal(int numDice, int numSides)
+        public int RollTotal(int numDice, int numSides)
         {
-            long total = 0;
+            int total = 0;
             for (int i = 0; i < numDice; i++)
             {
                 total += Rng.Next(numSides) + 1;

@@ -5,8 +5,8 @@ namespace DURPSBot
     [Serializable]
     class StatusEffect : EntityModifier
     {
-        private long duration;
+        private int duration;
 
-        public long Duration { get => duration; set => duration = value; }
+        public int Duration { get => duration; set => duration = value; }
     }
 }

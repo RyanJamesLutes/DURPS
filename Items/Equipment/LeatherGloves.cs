@@ -5,6 +5,7 @@ namespace DURPSBot.Items.Equipment
     [Serializable]
     class LeatherGloves : DURPSBot.Equipment
     {
+        // Page 15 of Low-Tech - Instant Armor
         public LeatherGloves()
         {
             Name = "Leather Gloves";
