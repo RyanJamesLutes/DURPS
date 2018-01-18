@@ -4,15 +4,15 @@ using System.Linq;
 
 namespace DURPSBot
 {
-    internal class Entity
+    class Entity
     {
         private EntityPrefix prefix;
         private string name;
         private EntitySuffix suffix;
         private int level;
         private long experience;
-        private int currentHealth;
-        private int maxHealth;
+        private int currentHitPoints;
+        private int maxHitPoints;
         private int strength;
         private int intelligence;
         private int dexterity;
@@ -29,26 +29,19 @@ namespace DURPSBot
         private Equipment equippedOffHand = new Items.Equipment.Empty();
         private Equipment equippedLegs = new Items.Equipment.Empty();
         private Equipment equippedFeet = new Items.Equipment.Empty();
-        private List<Equipment> allEquipment;
         private List<Item> inventory;
         private long money;
-
-        // Base attributes and modifiers
-        internal EntityPrefix Prefix { get => prefix; set => prefix = value; }
-        public string Name { get => name; set => name = value; }
-        internal EntitySuffix Suffix { get => suffix; set => suffix = value; }
-        public int Level { get => level; set => level = value; }
-        public long Experience { get => experience; set => experience = value; }
-        public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
-        public int MaxHealth { get => maxHealth; set => maxHealth = value; }
-        public int Strength { get => strength; set => strength = value; }
-        public int Intelligence { get => intelligence; set => intelligence = value; }
-        public int Dexterity { get => dexterity; set => dexterity = value; }
-        public int Luck { get => luck; set => luck = value; }
-        public int Fate { get => fate; set => fate = value; }
-        public int DamageResistance { get => damageResistance; set => damageResistance = value; }
-        internal List<Trait> Traits { get => traits; set => traits = value; }
-        internal List<StatusEffect> StatusEffect { get => statusEffect; set => statusEffect = value; }
+        private double speed; // Default = (health + Dextirity) / 2
+        private int fatiguePoints;
+        private int health;
+        private int willpower;
+        private int perception;
+        private string description;
+        private int sizeModifier;
+        private int dodge;
+        private bool canParry;
+        private int parry;
+        private int move;
 
         // Inventory and equipment
         public Equipment EquippedHead { get => equippedHead; set => equippedHead = value; }
@@ -61,6 +54,33 @@ namespace DURPSBot
         public Equipment EquippedFeet { get => equippedFeet; set => equippedFeet = value; }
         public List<Item> Inventory { get => inventory; set => inventory = value; }
         public long Money { get => money; set => money = value; }
+
+        // Base attributes and modifiers
+        internal EntityPrefix Prefix { get => prefix; set => prefix = value; }
+        public string Name { get => name; set => name = value; }
+        internal EntitySuffix Suffix { get => suffix; set => suffix = value; }
+        public int Level { get => level; set => level = value; }
+        public long Experience { get => experience; set => experience = value; }
+        public int CurrentHitPoints { get => currentHitPoints; set => currentHitPoints = value; }
+        public int MaxHitPoints { get => maxHitPoints; set => maxHitPoints = value; }
+        public int FatiguePoints { get => fatiguePoints; set => fatiguePoints = value; }
+        public int Willpower { get => willpower; set => willpower = value; }
+        public int Perception { get => perception; set => perception = value; }
+        public int Health { get => health; set => health = value; }
+        public int Strength { get => strength; set => strength = value; }
+        public int Intelligence { get => intelligence; set => intelligence = value; }
+        public int Dexterity { get => dexterity; set => dexterity = value; }
+        public int Luck { get => luck; set => luck = value; }
+        public int Fate { get => fate; set => fate = value; }
+        public int DamageResistance { get => damageResistance; set => damageResistance = value; }
+        internal List<Trait> Traits { get => traits; set => traits = value; }
+        internal List<StatusEffect> StatusEffect { get => statusEffect; set => statusEffect = value; }
+        public double Speed { get => speed; set => speed = value; }
+        public string Description { get => description; set => description = value; }
+        public int SizeModifier { get => sizeModifier; set => sizeModifier = value; }
+        public bool CanParry { get => canParry; set => canParry = value; }
+        public int Move { get => move; set => move = value; }
+        public int Dodge { get => dodge; set => dodge = value; }
 
         public string FullName()
         {
@@ -397,10 +417,6 @@ namespace DURPSBot
             }
 
         }
-        public double BasicSpeed()
-        {
-            return (MaxHealth + TotalDexterity()) / 2;
-        }
         public int TotalDamage()
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
@@ -408,22 +424,22 @@ namespace DURPSBot
         }
         public void UnarmedAttack(Entity target)
         {
-            int defactoDamage = BasicThrust() - (target.DamageResistance + target.EquippedBody.DamageResistance);
-            if (defactoDamage < 0)
+            int penetratingDamage = BasicThrust() - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            if (penetratingDamage < 0)
             {
-                defactoDamage = 0;
+                penetratingDamage = 0;
             }
-            target.CurrentHealth -= defactoDamage;
+            target.CurrentHitPoints -= penetratingDamage;
             return;
         }
         public void UnarmedAttack(Entity target, Equipment bodyPart)
         {
-            int defactoDamage = BasicThrust() - (target.DamageResistance + target.EquippedBody.DamageResistance);
-            if (defactoDamage < 0)
+            int penetratingDamage = BasicThrust() - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            if (penetratingDamage < 0)
             {
-                defactoDamage = 0;
+                penetratingDamage = 0;
             }
-            target.CurrentHealth -= defactoDamage;
+            target.CurrentHitPoints -= penetratingDamage;
             return;
         }
     }

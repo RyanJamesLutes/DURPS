@@ -19,7 +19,7 @@ namespace DURPSBot
 
         public string Name { get => name; set => name = value; }
         public int Level { get => level; set => level = value; }
-        public int Health { get => health; set => health = value; }
+        public int HitPoints { get => health; set => health = value; }
         public int Strength { get => strength; set => strength = value; }
         public int Intelligence { get => intelligence; set => intelligence = value; }
         public int Dexterity { get => dexterity; set => dexterity = value; }

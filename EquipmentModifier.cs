@@ -34,6 +34,8 @@
         public int Strength { get => strength; set => strength = value; }
         public int Intelligence { get => intelligence; set => intelligence = value; }
         public int Dexterity { get => dexterity; set => dexterity = value; }
+        public int RequiredLuck { get => requiredLuck; set => requiredLuck = value; }
+        public int RequiredFate { get => requiredFate; set => requiredFate = value; }
         public int Damage { get => damage; set => damage = value; }
         public double WeightMultiplier { get => weightMultiplier; set => weightMultiplier = value; }
         public double PriceMultiplier { get => priceMultiplier; set => priceMultiplier = value; }
@@ -43,7 +45,5 @@
         public int Shots { get => shots; set => shots = value; }
         public int RateOfFire { get => rateOfFire; set => rateOfFire = value; }
         public int Accuracy { get => accuracy; set => accuracy = value; }
-        public int RequiredLuck { get => requiredLuck; set => requiredLuck = value; }
-        public int RequiredFate { get => requiredFate; set => requiredFate = value; }
     }
 }

@@ -10,6 +10,7 @@ namespace DURPSBot
         private uint traitPoints;
         private string fileVersion;
         private int killedGiantRats = 0;
+        private int killedDireWolves = 0;
 
         public string UserID { get => userID; set => userID = value; }
         public uint TraitPoints { get => traitPoints; set => traitPoints = value; }
@@ -22,7 +23,9 @@ namespace DURPSBot
             characterClass = cc;
             Level = 1;
             Experience = 0;
-
+            CurrentHitPoints = MaxHitPoints;
+            Speed = (Health + TotalDexterity()) / 2;
+            FatiguePoints = Health;
 
             if (characterClass == "Jack")
             {
@@ -89,8 +92,10 @@ namespace DURPSBot
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
 
-            MaxHealth = TotalStrength();
-            CurrentHealth = TotalStrength();
+            Health = rng.Next(8,12);
+            MaxHitPoints = TotalStrength();
+            Perception = TotalIntelligence();
+            Willpower = TotalIntelligence();
         }
     }
 }

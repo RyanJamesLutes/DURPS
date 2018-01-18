@@ -43,23 +43,23 @@ namespace DURPSBot.Items.Equipment
         public void Thrust(Entity owner, Entity target)
         {
             Random rng = new Random();
-            int defactoDamage = (owner.BasicThrust() + Damage) - (target.DamageResistance + target.EquippedBody.DamageResistance);
-            if (defactoDamage < 0)
+            int penetratingDamage = (owner.BasicThrust() + Damage) - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            if (penetratingDamage < 0)
             {
-                defactoDamage = 0;
+                penetratingDamage = 0;
             }
-            target.CurrentHealth -= defactoDamage;
+            target.CurrentHitPoints -= penetratingDamage;
             return;
         }
         public void Thrust(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
         {
             Random rng = new Random();
-            int defactoDamage = (owner.BasicThrust() + Damage) - (target.DamageResistance + bodyPart.DamageResistance);
-            if (defactoDamage < 0)
+            int penetratingDamage = (owner.BasicThrust() + Damage) - (target.DamageResistance + bodyPart.DamageResistance);
+            if (penetratingDamage < 0)
             {
-                defactoDamage = 0;
+                penetratingDamage = 0;
             }
-            target.CurrentHealth -= defactoDamage;
+            target.CurrentHitPoints -= penetratingDamage;
             return;
         }
     }

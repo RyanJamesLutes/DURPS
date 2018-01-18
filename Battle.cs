@@ -18,7 +18,7 @@ namespace DURPSBot
             }
             turnOrder.Sort((a, b) => 
             {
-                return a.BasicSpeed().CompareTo(b.BasicSpeed());
+                return a.Speed.CompareTo(b.Speed);
             });
             turnOrder.Reverse();
         }

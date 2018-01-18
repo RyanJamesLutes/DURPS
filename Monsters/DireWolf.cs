@@ -6,28 +6,28 @@ using System.Threading.Tasks;
 
 namespace DURPSBot.Monsters
 {
-    class GiantRat : Monster
+    class DireWolf : Monster
     {
         // Page 24 of Dungeon Fantasy 2 - Dungeons
-        public GiantRat()
+        public DireWolf()
         {
-            Name = "Giant Rat";
-            Strength = 9;
-            Dexterity = 13;
-            Intelligence = 5;
-            Health = 13;
-            Dodge = 7;
-            MaxHitPoints = 9;
+            Name = "Dire Wolf";
+            Strength = 16;
+            Dexterity = 12;
+            Intelligence = 4;
+            Health = 12;
+            Dodge = 9;
+            MaxHitPoints = 16;
             CurrentHitPoints = MaxHitPoints;
-            Willpower = 10;
-            Perception = 12;
-            FatiguePoints = 13;
+            Willpower = 11;
+            Perception = 14;
+            FatiguePoints = 12;
             CanParry = false;
-            Move = 7;
-            SizeModifier = -1;
-            Speed = 6.5;
-            DamageResistance = 1;
-            Description = "There’s little to be said about giant rats: they’re as cunning and dextrous as regular rats, but huge, the size of the children they carry off as food.Almost all dungeons have them – especially sewers.They’re fodder for well - equipped adventurers, but every now and then, 20 or 30 of them will get crazy and swarm a party anyway.";
+            Speed = 6.0;
+            Move = 9;
+            SizeModifier = +1;
+            DamageResistance = 2;
+            Description = "Dire wolves are huge, strong, fast wolves with thick, wooly coats, keen senses, and a taste for human flesh. Tales of orcs using them as mounts are apocryphal – they’ll eat orcs, too. While one dire wolf might be no challenge for adventurers, they tend to occur in packs of up to 20.";
         }
 
         public void BattleAction(Entity target)
@@ -53,7 +53,7 @@ namespace DURPSBot.Monsters
         public void Bite(Entity target)
         {
             Random rng = new Random();
-            int penetratingDamage = (rng.Next(6) - 1) - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            int penetratingDamage = (rng.Next(6) + 1) - (target.DamageResistance + target.EquippedBody.DamageResistance);
             if (penetratingDamage < 0)
             {
                 penetratingDamage = 0;
@@ -64,7 +64,7 @@ namespace DURPSBot.Monsters
         public void Bite(Entity target, Equipment bodyPart)
         {
             Random rng = new Random();
-            int penetratingDamage = (rng.Next(6) - 1) - (target.DamageResistance + bodyPart.DamageResistance);
+            int penetratingDamage = (rng.Next(6) + 1) - (target.DamageResistance + bodyPart.DamageResistance);
             if (penetratingDamage < 0)
             {
                 penetratingDamage = 0;

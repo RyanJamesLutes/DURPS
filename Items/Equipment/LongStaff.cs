@@ -45,23 +45,23 @@ namespace DURPSBot.Items.Equipment
         public void Swing(Entity owner, Entity target)
         {
             Random rng = new Random();
-            int defactoDamage = (owner.BasicSwing() + owner.TotalDamage()) - (target.DamageResistance + target.EquippedBody.DamageResistance);
-            if (defactoDamage < 0)
+            int penetratingDamage = (owner.BasicSwing() + owner.TotalDamage()) - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            if (penetratingDamage < 0)
             {
-                defactoDamage = 0;
+                penetratingDamage = 0;
             }
-            target.CurrentHealth -= defactoDamage;
+            target.CurrentHealth -= penetratingDamage;
             return;
         }
         public void Swing(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
         {
             Random rng = new Random();
-            int defactoDamage = (owner.BasicSwing() + owner.TotalDamage()) - (target.DamageResistance + bodyPart.DamageResistance);
-            if (defactoDamage < 0)
+            int penetratingDamage = (owner.BasicSwing() + owner.TotalDamage()) - (target.DamageResistance + bodyPart.DamageResistance);
+            if (penetratingDamage < 0)
             {
-                defactoDamage = 0;
+                penetratingDamage = 0;
             }
-            target.CurrentHealth -= defactoDamage;
+            target.CurrentHealth -= penetratingDamage;
             return;
         }
     }

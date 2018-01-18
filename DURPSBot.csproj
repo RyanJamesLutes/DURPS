@@ -158,6 +158,7 @@
     <Compile Include="Items\Equipment\Mace.cs" />
     <Compile Include="Items\Equipment\Axe.cs" />
     <Compile Include="Monster.cs" />
+    <Compile Include="Monsters\DireWolf.cs" />
     <Compile Include="Monsters\GiantRat.cs" />
     <Compile Include="PlayerCharacter.cs" />
     <Compile Include="EntityModifier.cs" />
