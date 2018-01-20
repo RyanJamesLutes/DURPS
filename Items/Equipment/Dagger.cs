@@ -20,7 +20,7 @@ namespace DURPSBot.Items.Equipment
             TechLevel = 1;
             ItemID = GenerateItemID();
         }
-        public void BattleAction(Entity owner, Entity target)
+        public override void BattleAction(Entity owner, Entity target)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))
@@ -30,7 +30,7 @@ namespace DURPSBot.Items.Equipment
                     break;
             }
         }
-        public void BattleAction(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
+        public override void BattleAction(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))
@@ -43,7 +43,7 @@ namespace DURPSBot.Items.Equipment
         public void Thrust(Entity owner, Entity target)
         {
             Random rng = new Random();
-            int penetratingDamage = (owner.BasicThrust() + Damage) - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            int penetratingDamage = (owner.BasicThrust() + TotalDamage()) - (target.DamageResistance + target.EquippedBody.DamageResistance);
             if (penetratingDamage < 0)
             {
                 penetratingDamage = 0;
@@ -54,7 +54,7 @@ namespace DURPSBot.Items.Equipment
         public void Thrust(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
         {
             Random rng = new Random();
-            int penetratingDamage = (owner.BasicThrust() + Damage) - (target.DamageResistance + bodyPart.DamageResistance);
+            int penetratingDamage = (owner.BasicThrust() + TotalDamage()) - (target.DamageResistance + bodyPart.DamageResistance);
             if (penetratingDamage < 0)
             {
                 penetratingDamage = 0;

@@ -31,7 +31,7 @@ namespace DURPSBot
         private Equipment equippedFeet = new Items.Equipment.Empty();
         private List<Item> inventory;
         private long money;
-        private double speed; // Default = (health + Dextirity) / 2
+        private double speed; // Default = (Health + Dextirity) / 2
         private int fatiguePoints;
         private int health;
         private int willpower;
@@ -89,17 +89,32 @@ namespace DURPSBot
         public int TotalStrength()
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
-            return Strength + EquippedHead.TotalStrength() + EquippedBody.TotalStrength() + EquippedArms.TotalStrength() + EquippedGloves.TotalStrength() + EquippedMainHand.TotalStrength() + EquippedOffHand.TotalStrength() + EquippedLegs.TotalStrength() + EquippedFeet.TotalStrength();
+            int totalStrength = Strength;
+            foreach (Equipment e in AllEquipment())
+            {
+                totalStrength += e.TotalStrength();
+            }
+            return totalStrength;
         }
         public int TotalIntelligence()
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
-            return Intelligence + EquippedHead.TotalIntelligence() + EquippedBody.TotalIntelligence() + EquippedArms.TotalIntelligence() + EquippedGloves.TotalIntelligence() + EquippedMainHand.TotalIntelligence() + EquippedOffHand.TotalIntelligence() + EquippedLegs.TotalIntelligence() + EquippedFeet.TotalIntelligence();
+            int totalIntelligence = Intelligence;
+            foreach (Equipment e in AllEquipment())
+            {
+                totalIntelligence += e.TotalIntelligence();
+            }
+            return totalIntelligence;
         }
         public int TotalDexterity()
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
-            return Dexterity + EquippedHead.TotalDexterity() + EquippedBody.TotalDexterity() + EquippedArms.TotalDexterity() + EquippedGloves.TotalDexterity() + EquippedMainHand.TotalDexterity() + EquippedOffHand.TotalDexterity() + EquippedLegs.TotalDexterity() + EquippedFeet.TotalDexterity();
+            int totalDexterity = Dexterity;
+            foreach (Equipment e in AllEquipment())
+            {
+                totalDexterity += e.TotalDexterity();
+            }
+            return totalDexterity;
         }
         public int BasicLift()
         {
@@ -416,11 +431,6 @@ namespace DURPSBot
                 return 0;
             }
 
-        }
-        public int TotalDamage()
-        {
-            // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
-            return EquippedHead.TotalDamage() + EquippedBody.TotalDamage() + EquippedArms.TotalDamage() + EquippedGloves.TotalDamage() + EquippedMainHand.TotalDamage() + EquippedOffHand.TotalDamage() + EquippedLegs.TotalDamage() + EquippedFeet.TotalDamage();
         }
         public void UnarmedAttack(Entity target)
         {

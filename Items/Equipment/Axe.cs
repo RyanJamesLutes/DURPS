@@ -20,7 +20,7 @@ namespace DURPSBot.Items.Equipment
             TechLevel = 0;
             ItemID = GenerateItemID();
         }
-        public void BattleAction(Entity owner, Entity target)
+        public override void BattleAction(Entity owner, Entity target)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))
@@ -30,7 +30,7 @@ namespace DURPSBot.Items.Equipment
                     break;
             }
         }
-        public void BattleAction(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
+        public override void BattleAction(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))
@@ -43,23 +43,23 @@ namespace DURPSBot.Items.Equipment
         public void Swing(Entity owner, Entity target)
         {
             Random rng = new Random();
-            int penetratingDamage = (owner.BasicSwing() + owner.TotalDamage()) - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            int penetratingDamage = (owner.BasicSwing() + TotalDamage()) - (target.DamageResistance + target.EquippedBody.DamageResistance);
             if (penetratingDamage < 0)
             {
                 penetratingDamage = 0;
             }
-            target.CurrentHealth -= penetratingDamage;
+            target.CurrentHitPoints -= penetratingDamage;
             return;
         }
         public void Swing(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
         {
             Random rng = new Random();
-            int penetratingDamage = (owner.BasicSwing() + owner.TotalDamage()) - (target.DamageResistance + bodyPart.DamageResistance);
+            int penetratingDamage = (owner.BasicSwing() + TotalDamage()) - (target.DamageResistance + bodyPart.DamageResistance);
             if (penetratingDamage < 0)
             {
                 penetratingDamage = 0;
             }
-            target.CurrentHealth -= penetratingDamage;
+            target.CurrentHitPoints -= penetratingDamage;
             return;
         }
     }

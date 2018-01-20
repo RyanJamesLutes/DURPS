@@ -32,6 +32,7 @@ namespace DURPSBot
         private int fate = 0;
         private int damage = 0;
         private int parry = 0;
+        private string damageType = "None";
         private int damageResistance = 0;
         private int accuracy = 0;
         private int rateOfFire = 0;
@@ -122,6 +123,14 @@ namespace DURPSBot
         public int TotalDamage()
         {
             return Damage + prefix.Damage + suffix.Damage;
+        }
+        public virtual void BattleAction(Entity owner, Entity target)
+        {
+            owner.UnarmedAttack(target);
+        }
+        public virtual void BattleAction(Entity owner, Entity target, Equipment bodyPart)
+        {
+            owner.UnarmedAttack(target, bodyPart);
         }
     }
 }
