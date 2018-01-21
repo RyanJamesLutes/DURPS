@@ -15,6 +15,14 @@ namespace DURPSBot
         public string UserID { get => userID; set => userID = value; }
         public uint TraitPoints { get => traitPoints; set => traitPoints = value; }
         public string FileVersion { get => fileVersion; set => fileVersion = value; }
+        public int KilledGiantRats { get => killedGiantRats; set => killedGiantRats = value; }
+        public int KilledDireWolves { get => killedDireWolves; set => killedDireWolves = value; }
+
+        public int TotalKills()
+        {
+            int kills = KilledGiantRats + KilledDireWolves;
+            return kills;
+        }
 
         public PlayerCharacter(string cc)
         {

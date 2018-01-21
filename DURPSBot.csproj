@@ -157,6 +157,7 @@
     <Compile Include="Items\Equipment\BrassKnuckles.cs" />
     <Compile Include="Items\Equipment\Mace.cs" />
     <Compile Include="Items\Equipment\Axe.cs" />
+    <Compile Include="Modules\HelpModule.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="Monsters\DireWolf.cs" />
     <Compile Include="Monsters\GiantRat.cs" />

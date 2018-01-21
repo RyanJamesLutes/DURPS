@@ -12,7 +12,6 @@ namespace DURPSBot
         {
             // ReplyAsync is a method on ModuleBase
             await ReplyAsync(echo);
-            string commandAuthor = Context.Message.Author.Discriminator;
         }
     }
 }

@@ -10,50 +10,39 @@ namespace DURPSBot
     {
         private List<Entity> turnOrder = new List<Entity>();
 
-        public Battle(PlayerCharacter pc, params Entity[] enemies)
+        public void Fight()
         {
-            turnOrder.Add(pc);
-            for (int i = 0; i < enemies.Length; i++)
+            while (turnOrder.Count > 1)
             {
-                turnOrder.Add(enemies[i]);
-            }
-
-            turnOrder.Sort((a, b) => 
-            {
-                return a.Speed.CompareTo(b.Speed);
-            });
-            turnOrder.Reverse();
-        }
-
-        public void FightTurn()
-        {
-            foreach (Entity e in turnOrder)
-            {
-                if (e is PlayerCharacter)
+                foreach (Entity e in turnOrder)
                 {
-                    Entity target = TargetMonster();
-                    if (e.EquippedMainHand is Items.Equipment.Empty)
+                    if (e is PlayerCharacter)
                     {
-                        e.UnarmedAttack(target, TargetBodyPart(target));
+                        Entity target = TargetMonster();
+                        if (e.EquippedMainHand is Items.Equipment.Empty)
+                        {
+                            e.UnarmedAttack(target, TargetBodyPart(target));
+                        }
+                        else
+                        {
+                            e.EquippedMainHand.BattleAction(e, target);
+                        }
+                        if (target.CurrentHitPoints <= target.MaxHitPoints)
+                        {
+                            // TODO: Monster dies
+                            target.Die(e);
+                            turnOrder.Remove(target);
+                        }
                     }
-                    else
+                    else if (e is Monster)
                     {
+                        PlayerCharacter target = TargetPlayer();
                         e.EquippedMainHand.BattleAction(e, target);
-                    }
-                    if (target.CurrentHitPoints <= target.MaxHitPoints)
-                    {
-                        // TODO: Monster dies
-                        turnOrder.Remove(target);
-                    }
-                }
-                else if (e is Monster)
-                {
-                    PlayerCharacter target = TargetPlayer();
-                    e.EquippedMainHand.BattleAction(e, target);
 
-                    if (target.CurrentHitPoints <= target.MaxHitPoints)
-                    {
-                        // TODO: Player dies
+                        if (target.CurrentHitPoints <= target.MaxHitPoints)
+                        {
+                            // TODO: Player dies
+                        }
                     }
                 }
             }
@@ -98,6 +87,21 @@ namespace DURPSBot
         private PlayerCharacter TargetPlayer()
         {
             return turnOrder.OfType<PlayerCharacter>().First();
+        }
+
+        public Battle(PlayerCharacter pc, params Entity[] enemies)
+        {
+            turnOrder.Add(pc);
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                turnOrder.Add(enemies[i]);
+            }
+
+            turnOrder.Sort((a, b) =>
+            {
+                return a.Speed.CompareTo(b.Speed);
+            });
+            turnOrder.Reverse();
         }
     }
 }

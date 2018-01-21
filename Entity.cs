@@ -86,6 +86,11 @@ namespace DURPSBot
         {
             return Prefix.Name + " " + name + " " + Suffix.Name;
         }
+        public List<Equipment> AllEquipment()
+        {
+            List<Equipment> equipList = new List<Equipment> { EquippedHead, EquippedBody, EquippedArms, EquippedGloves, EquippedMainHand, EquippedOffHand, EquippedLegs, EquippedFeet };
+            return equipList;
+        }
         public int TotalStrength()
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits

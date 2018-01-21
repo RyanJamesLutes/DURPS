@@ -20,6 +20,7 @@ namespace DURPSBot
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
+                await ReplyAsync("Character created with ID " + commandAuthor);
             }
             else if (characterClass == "2" || characterClass.ToLower() == "warrior")
             {
@@ -29,6 +30,7 @@ namespace DURPSBot
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
+                await ReplyAsync("Character created with ID " + commandAuthor);
             }
             else if (characterClass == "3" || characterClass.ToLower() == "rogue")
             {
@@ -38,6 +40,7 @@ namespace DURPSBot
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
+                await ReplyAsync("Character created with ID " + commandAuthor);
             }
             else if (characterClass == "4" || characterClass.ToLower() == "mage")
             {
@@ -47,6 +50,7 @@ namespace DURPSBot
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
+                await ReplyAsync("Character created with ID " + commandAuthor);
             }
             else if (characterClass == "5" || characterClass.ToLower() == "fool")
             {
@@ -56,6 +60,7 @@ namespace DURPSBot
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
+                await ReplyAsync("Character created with ID " + commandAuthor);
             }
             else if (characterClass == "6" || characterClass.ToLower() == "wanderer")
             {
@@ -65,6 +70,7 @@ namespace DURPSBot
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
+                await ReplyAsync("Character created with ID " + commandAuthor);
             }
             else
             {

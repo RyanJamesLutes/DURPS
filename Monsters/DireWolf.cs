@@ -72,6 +72,11 @@ namespace DURPSBot.Monsters
             target.CurrentHitPoints -= penetratingDamage;
             return;
         }
+        public void Die(PlayerCharacter killer)
+        {
+            killer.KilledDireWolves += 1;
+            return;
+        }
 
         // TODO: Traits, skills, etc.
     }
