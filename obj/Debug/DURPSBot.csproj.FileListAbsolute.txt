@@ -47,3 +47,7 @@ C:\Users\Ryan\Source\Repos\DiscordBot\DiscordBot\obj\Debug\DURPSBot.csprojResolv
 C:\Users\Ryan\Source\Repos\DiscordBot\DiscordBot\obj\Debug\DURPSBot.csproj.CoreCompileInputs.cache
 C:\Users\Ryan\Source\Repos\DiscordBot\DiscordBot\obj\Debug\DURPSBot.exe
 C:\Users\Ryan\Source\Repos\DiscordBot\DiscordBot\obj\Debug\DURPSBot.pdb
+C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Debug\DURPSBot.csprojResolveAssemblyReference.cache
+C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Debug\DURPSBot.csproj.CoreCompileInputs.cache
+C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Debug\DURPSBot.exe
+C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Debug\DURPSBot.pdb

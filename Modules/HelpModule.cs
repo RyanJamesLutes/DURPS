@@ -10,7 +10,7 @@ namespace DURPSBot
         public async Task HelpAsync()
         {
             // ReplyAsync is a method on ModuleBase
-            await ReplyAsync("createcharacter \n echo <message> \n help \n roll <dice notation>");
+            await ReplyAsync("createcharacter \n echo <message> \n equip <inventory #> \n help \n unequip <slot> \n roll <dice notation>");
         }
     }
 }

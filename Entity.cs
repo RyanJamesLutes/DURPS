@@ -29,7 +29,7 @@ namespace DURPSBot
         private Equipment equippedOffHand = new Items.Equipment.Empty();
         private Equipment equippedLegs = new Items.Equipment.Empty();
         private Equipment equippedFeet = new Items.Equipment.Empty();
-        private List<Item> inventory;
+        private List<Equipment> inventory;
         private long money;
         private double speed; // Default = (Health + Dextirity) / 2
         private int fatiguePoints;
@@ -42,6 +42,7 @@ namespace DURPSBot
         private bool canParry;
         private int parry;
         private int move;
+        private int defeats;
 
         // Inventory and equipment
         public Equipment EquippedHead { get => equippedHead; set => equippedHead = value; }
@@ -52,7 +53,7 @@ namespace DURPSBot
         public Equipment EquippedOffHand { get => equippedOffHand; set => equippedOffHand = value; }
         public Equipment EquippedLegs { get => equippedLegs; set => equippedLegs = value; }
         public Equipment EquippedFeet { get => equippedFeet; set => equippedFeet = value; }
-        public List<Item> Inventory { get => inventory; set => inventory = value; }
+        public List<Equipment> Inventory { get => inventory; set => inventory = value; }
         public long Money { get => money; set => money = value; }
 
         // Base attributes and modifiers
@@ -81,6 +82,7 @@ namespace DURPSBot
         public bool CanParry { get => canParry; set => canParry = value; }
         public int Move { get => move; set => move = value; }
         public int Dodge { get => dodge; set => dodge = value; }
+        public int Defeats { get => defeats; set => defeats = value; }
 
         public string FullName()
         {
@@ -120,6 +122,26 @@ namespace DURPSBot
                 totalDexterity += e.TotalDexterity();
             }
             return totalDexterity;
+        }
+        public int TotalLuck()
+        {
+            // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
+            int totalLuck = Luck;
+            foreach (Equipment e in AllEquipment())
+            {
+                totalLuck += e.TotalLuck();
+            }
+            return totalLuck;
+        }
+        public int TotalFate()
+        {
+            // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
+            int totalFate = Luck;
+            foreach (Equipment e in AllEquipment())
+            {
+                totalFate += e.TotalFate();
+            }
+            return totalFate;
         }
         public int BasicLift()
         {
@@ -455,6 +477,90 @@ namespace DURPSBot
                 penetratingDamage = 0;
             }
             target.CurrentHitPoints -= penetratingDamage;
+            return;
+        }
+        public void Unequip(Equipment equipmentSlot)
+        {
+            if (equipmentSlot is Items.Equipment.Empty == false)
+            {
+                Inventory.Add(equipmentSlot);
+                equipmentSlot = new Items.Equipment.Empty();
+            }
+            else
+            {
+                Inventory.Add(equipmentSlot);
+            }
+        }
+        public void Equip(Equipment equipment)
+        {
+            if (MeetsRequirements(equipment))
+            {
+                if (equipment.EquipsToMainHand)
+                {
+                    if (equipment.IsTwoHanded)
+                    {
+                        Unequip(EquippedOffHand);
+                    }
+                    Unequip(EquippedMainHand);
+                    EquippedMainHand = equipment;
+                }
+                else if (equipment.EquipsToOffHand)
+                {
+                    Unequip(EquippedOffHand);
+                    EquippedOffHand = equipment;
+                }
+                else if (equipment.EquipsToBody)
+                {
+                    Unequip(EquippedBody);
+                    EquippedBody = equipment;
+                }
+                else if (equipment.EquipsToArms)
+                {
+                    Unequip(EquippedArms);
+                    EquippedArms = equipment;
+                }
+                else if (equipment.EquipsToGloves)
+                {
+                    Unequip(EquippedGloves);
+                    EquippedGloves = equipment;
+                }
+                else if (equipment.EquipsToLegs)
+                {
+                    Unequip(EquippedLegs);
+                    EquippedLegs = equipment;
+                }
+                else if (equipment.EquipsToFeet)
+                {
+                    Unequip(EquippedFeet);
+                    EquippedFeet = equipment;
+                }
+            }
+        }
+        public bool MeetsRequirements(Equipment e)
+        {
+            if (
+                TotalStrength() >= e.TotalRequiredStrength()
+                && TotalIntelligence() >= e.TotalRequiredIntelligence()
+                && TotalDexterity() >= e.TotalRequiredDexterity()
+                && TotalLuck() >= e.TotalRequiredLuck()
+                && TotalFate() >= e.TotalRequiredFate()
+               )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public virtual void Die(PlayerCharacter killer)
+        {
+            defeats += 1;
+            return;
+        }
+        public virtual void Die(Entity killer)
+        {
+            defeats += 1;
             return;
         }
     }

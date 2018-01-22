@@ -72,7 +72,7 @@ namespace DURPSBot.Monsters
             target.CurrentHitPoints -= penetratingDamage;
             return;
         }
-        public void Die(PlayerCharacter killer)
+        public override void Die(PlayerCharacter killer)
         {
             killer.KilledDireWolves += 1;
             return;

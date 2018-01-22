@@ -10,7 +10,6 @@ namespace DURPSBot
         [Summary("Echoes a message.")]
         public async Task EchoAsync([Remainder] [Summary("The text to echo")] string echo)
         {
-            // ReplyAsync is a method on ModuleBase
             await ReplyAsync(echo);
         }
     }

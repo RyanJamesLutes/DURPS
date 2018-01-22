@@ -92,6 +92,14 @@ namespace DURPSBot
         {
             return requiredDexterity + prefix.RequiredDexterity + suffix.RequiredDexterity;
         }
+        public int TotalRequiredLuck()
+        {
+            return requiredLuck + prefix.RequiredLuck + suffix.RequiredLuck;
+        }
+        public int TotalRequiredFate()
+        {
+            return requiredFate + prefix.RequiredFate + suffix.RequiredFate;
+        }
         public int TotalStrength()
         {
             return Strength + prefix.Strength + suffix.Strength;
@@ -103,6 +111,14 @@ namespace DURPSBot
         public int TotalDexterity()
         {
             return dexterity + prefix.Dexterity + suffix.Dexterity;
+        }
+        public int TotalLuck()
+        {
+            return luck + prefix.Luck + suffix.Luck;
+        }
+        public int TotalFate()
+        {
+            return fate + prefix.Fate + suffix.Fate;
         }
         public int TotalDamageResistance()
         {
