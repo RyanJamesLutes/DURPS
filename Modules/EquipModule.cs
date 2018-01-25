@@ -9,9 +9,8 @@ namespace DURPSBot
         [Summary("Displays a list of commands.")]
         public async Task EquipAsync([Remainder] [Summary("Inventory index of equipment")] int invIndex)
         {
-            string commandAuthor = Context.Message.Author.Discriminator;
             DataManager dm = new DataManager();
-            PlayerCharacter pc = dm.Load(commandAuthor);
+            PlayerCharacter pc = dm.Load(Context.Message.Author.Discriminator);
             Equipment equipment = pc.Inventory[invIndex + 1];
             if (pc.Inventory.Count >= invIndex + 1)
             {

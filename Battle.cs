@@ -8,6 +8,7 @@ namespace DURPSBot
 {
     class Battle
     {
+        // TODO: Create parties of monsters to encounter.
         private List<Entity> turnOrder = new List<Entity>();
 
         public void Fight()

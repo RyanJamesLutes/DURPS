@@ -1,22 +1,24 @@
-﻿using System;
+﻿using Discord.WebSocket;
+using System;
 
 namespace DURPSBot
 {
     [Serializable]
     class PlayerCharacter : Entity
     {
-        private string userID;
         private string characterClass;
         private uint traitPoints;
         private string fileVersion;
+        private ulong userID;
+
         private int killedGiantRats = 0;
         private int killedDireWolves = 0;
 
-        public string UserID { get => userID; set => userID = value; }
         public uint TraitPoints { get => traitPoints; set => traitPoints = value; }
         public string FileVersion { get => fileVersion; set => fileVersion = value; }
         public int KilledGiantRats { get => killedGiantRats; set => killedGiantRats = value; }
         public int KilledDireWolves { get => killedDireWolves; set => killedDireWolves = value; }
+        public ulong UserID { get => userID; set => userID = value; }
 
         public int TotalKills()
         {

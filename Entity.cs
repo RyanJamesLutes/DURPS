@@ -42,7 +42,8 @@ namespace DURPSBot
         private bool canParry;
         private int parry;
         private int move;
-        private int defeats;
+        private int wins;
+        private int losses;
 
         // Inventory and equipment
         public Equipment EquippedHead { get => equippedHead; set => equippedHead = value; }
@@ -82,7 +83,8 @@ namespace DURPSBot
         public bool CanParry { get => canParry; set => canParry = value; }
         public int Move { get => move; set => move = value; }
         public int Dodge { get => dodge; set => dodge = value; }
-        public int Defeats { get => defeats; set => defeats = value; }
+        public int Losses { get => losses; set => losses = value; }
+        public int Wins { get => wins; set => wins = value; }
 
         public string FullName()
         {
@@ -555,12 +557,12 @@ namespace DURPSBot
         }
         public virtual void Die(PlayerCharacter killer)
         {
-            defeats += 1;
+            losses += 1;
             return;
         }
         public virtual void Die(Entity killer)
         {
-            defeats += 1;
+            losses += 1;
             return;
         }
     }

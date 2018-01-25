@@ -1,5 +1,4 @@
 ﻿using Discord.Commands;
-using DURPSBot;
 using System.Threading.Tasks;
 
 namespace DURPSBot
@@ -10,67 +9,67 @@ namespace DURPSBot
         [Summary("Generates a new RPG character.")]
         public async Task CreateCharacterAsync([Remainder] [Summary("Class to create.")] string characterClass)
         {
-            string commandAuthor = Context.Message.Author.Discriminator;
             DataManager dm = new DataManager();
             if (characterClass == "1" || characterClass.ToLower() == "jack")
             {
                 PlayerCharacter pc = new PlayerCharacter("Jack")
                 {
-                    UserID = commandAuthor,
+                    UserID = Context.Message.Author.Id,
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
-                await ReplyAsync("Character created with ID " + commandAuthor);
+                await ReplyAsync("Character created.");
+
             }
             else if (characterClass == "2" || characterClass.ToLower() == "warrior")
             {
                 PlayerCharacter pc = new PlayerCharacter("Warrior")
                 {
-                    UserID = commandAuthor,
+                    UserID = Context.Message.Author.Id,
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
-                await ReplyAsync("Character created with ID " + commandAuthor);
+                await ReplyAsync("Character created.");
             }
             else if (characterClass == "3" || characterClass.ToLower() == "rogue")
             {
                 PlayerCharacter pc = new PlayerCharacter("Rogue")
                 {
-                    UserID = commandAuthor,
+                    UserID = Context.Message.Author.Id,
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
-                await ReplyAsync("Character created with ID " + commandAuthor);
+                await ReplyAsync("Character created.");
             }
             else if (characterClass == "4" || characterClass.ToLower() == "mage")
             {
                 PlayerCharacter pc = new PlayerCharacter("Mage")
                 {
-                    UserID = commandAuthor,
+                    UserID = Context.Message.Author.Id,
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
-                await ReplyAsync("Character created with ID " + commandAuthor);
+                await ReplyAsync("Character created.");
             }
             else if (characterClass == "5" || characterClass.ToLower() == "fool")
             {
                 PlayerCharacter pc = new PlayerCharacter("Fool")
                 {
-                    UserID = commandAuthor,
+                    UserID = Context.Message.Author.Id,
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
-                await ReplyAsync("Character created with ID " + commandAuthor);
+                await ReplyAsync("Character created.");
             }
             else if (characterClass == "6" || characterClass.ToLower() == "wanderer")
             {
                 PlayerCharacter pc = new PlayerCharacter("Wanderer")
                 {
-                    UserID = commandAuthor,
+                    UserID = Context.Message.Author.Id,
                     Name = Context.Message.Author.Username
                 };
                 dm.Save(pc);
-                await ReplyAsync("Character created with ID " + commandAuthor);
+                await ReplyAsync("Character created.");
             }
             else
             {
