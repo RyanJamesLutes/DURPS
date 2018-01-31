@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DURPSBot
 {
+    [Serializable]
     class Item
     {
         private string name;

@@ -13,7 +13,7 @@ namespace DURPSBot
 
         private int killedGiantRats = 0;
         private int killedDireWolves = 0;
-        private int KilledUnicorns = 0;
+        private int killedUnicorns = 0;
         private int killedZombies = 0;
         private int wins = 0;
         private int losses = 0;
@@ -24,14 +24,14 @@ namespace DURPSBot
         public int KilledGiantRats { get => killedGiantRats; set => killedGiantRats = value; }
         public int KilledDireWolves { get => killedDireWolves; set => killedDireWolves = value; }
         public int KilledZombies { get => killedZombies; set => killedZombies = value; }
-        public int KilledUnicorns1 { get => KilledUnicorns; set => KilledUnicorns = value; }
+        public int KilledUnicorns { get => killedUnicorns; set => killedUnicorns = value; }
         public int Wins { get => wins; set => wins = value; }
         public int Losses { get => losses; set => losses = value; }
         public string CharacterClass { get => characterClass; set => characterClass = value; }
 
         public int TotalKills()
         {
-            int kills = KilledGiantRats + KilledDireWolves + KilledUnicorns1 + KilledZombies;
+            int kills = KilledGiantRats + KilledDireWolves + KilledUnicorns + KilledZombies;
             return kills;
         }
 

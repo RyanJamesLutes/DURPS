@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace DURPSBot
 {
+    [Serializable]
     class Entity
     {
         private EntityPrefix prefix = new EntityPrefix();

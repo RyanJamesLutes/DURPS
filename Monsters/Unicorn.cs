@@ -51,7 +51,7 @@ namespace DURPSBot.Monsters
         }
         public override void Die(PlayerCharacter killer)
         {
-            killer.KilledUnicorns1 += 1;
+            killer.KilledUnicorns += 1;
             return;
         }
 

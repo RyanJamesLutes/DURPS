@@ -32,7 +32,7 @@ namespace DURPSBot
         private int fate = 0;
         private int damage = 0;
         private int parry = 0;
-        private string damageType = "None";
+        private string damageType = "";
         private int damageResistance = 0;
         private int accuracy = 0;
         private int rateOfFire = 0;
@@ -67,7 +67,7 @@ namespace DURPSBot
         public int Accuracy { get => accuracy; set => accuracy = value; }
         public int RateOfFire { get => rateOfFire; set => rateOfFire = value; }
         public int Shots { get => shots; set => shots = value; }
-        public int Damage { get => Damage; set => Damage = value; }
+        public int Damage { get => damage; set => damage = value; }
         public int Luck { get => luck; set => luck = value; }
         public int Fate { get => fate; set => fate = value; }
         public int RequiredLuck { get => requiredLuck; set => requiredLuck = value; }
@@ -75,6 +75,7 @@ namespace DURPSBot
         public int Reach { get => reach; set => reach = value; }
         public byte TechLevel { get => techLevel; set => techLevel = value; }
         public bool CanParry { get => canParry; set => canParry = value; }
+        public string DamageType { get => damageType; set => damageType = value; }
 
         public int TotalRequiredLevel()
         {

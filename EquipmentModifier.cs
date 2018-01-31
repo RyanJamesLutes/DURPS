@@ -1,11 +1,14 @@
-﻿namespace DURPSBot
+﻿using System;
+
+namespace DURPSBot
 {
+    [Serializable]
     class EquipmentModifier
     {
-        private string name;
+        private string name = "";
         /// <summary> Common, Uncommon, Rare, Epic, Legendary</summary>
         ///
-        private byte rarity;
+        private byte rarity = 0;
         private int requiredLevel = 0;
         private int requiredStrength = 0;
         private int requiredIntelligence = 0;
