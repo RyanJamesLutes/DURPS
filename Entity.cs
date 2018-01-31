@@ -6,21 +6,21 @@ namespace DURPSBot
 {
     class Entity
     {
-        private EntityPrefix prefix;
-        private string name;
-        private EntitySuffix suffix;
-        private int level;
-        private long experience;
-        private int currentHitPoints;
-        private int maxHitPoints;
-        private int strength;
-        private int intelligence;
-        private int dexterity;
-        private int luck;
-        private int fate;
-        private int damageResistance;
-        private List<Trait> traits;
-        private List<StatusEffect> statusEffect;
+        private EntityPrefix prefix = new EntityPrefix();
+        private string name = "";
+        private EntitySuffix suffix = new EntitySuffix();
+        private int level = 0;
+        private long experience = 0;
+        private int currentHitPoints = 0;
+        private int maxHitPoints = 0;
+        private int strength = 0;
+        private int intelligence = 0;
+        private int dexterity = 0;
+        private int luck = 0;
+        private int fate = 0;
+        private int damageResistance = 0;
+        private List<Trait> traits = new List<Trait>();
+        private List<StatusEffect> statusEffect = new List<StatusEffect>();
         private Equipment equippedHead = new Items.Equipment.Empty();
         private Equipment equippedBody = new Items.Equipment.Empty();
         private Equipment equippedArms = new Items.Equipment.Empty();
@@ -29,21 +29,21 @@ namespace DURPSBot
         private Equipment equippedOffHand = new Items.Equipment.Empty();
         private Equipment equippedLegs = new Items.Equipment.Empty();
         private Equipment equippedFeet = new Items.Equipment.Empty();
-        private List<Equipment> inventory;
-        private long money;
-        private double speed; // Default = (Health + Dextirity) / 2
-        private int fatiguePoints;
-        private int health;
-        private int willpower;
-        private int perception;
-        private string description;
-        private int sizeModifier;
-        private int dodge;
-        private bool canParry;
-        private int parry;
-        private int move;
-        private int wins;
-        private int losses;
+        private List<Equipment> inventoryEquipment = new List<Equipment>();
+        private long money = 0;
+        private double speed = 0; // Default = (Health + Dextirity) / 2
+        private int fatiguePoints = 0;
+        private int health = 0;
+        private int willpower = 0;
+        private int perception = 0;
+        private string description = "";
+        private int sizeModifier = 0;
+        private int dodge = 0;
+        private bool canFatigue = false;
+        private bool canDodge = false;
+        private bool canParry = false;
+        private int parry = 0;
+        private int move = 0;
 
         // Inventory and equipment
         public Equipment EquippedHead { get => equippedHead; set => equippedHead = value; }
@@ -54,7 +54,7 @@ namespace DURPSBot
         public Equipment EquippedOffHand { get => equippedOffHand; set => equippedOffHand = value; }
         public Equipment EquippedLegs { get => equippedLegs; set => equippedLegs = value; }
         public Equipment EquippedFeet { get => equippedFeet; set => equippedFeet = value; }
-        public List<Equipment> Inventory { get => inventory; set => inventory = value; }
+        public List<Equipment> InventoryEquipment { get => inventoryEquipment; set => inventoryEquipment = value; }
         public long Money { get => money; set => money = value; }
 
         // Base attributes and modifiers
@@ -83,14 +83,15 @@ namespace DURPSBot
         public bool CanParry { get => canParry; set => canParry = value; }
         public int Move { get => move; set => move = value; }
         public int Dodge { get => dodge; set => dodge = value; }
-        public int Losses { get => losses; set => losses = value; }
-        public int Wins { get => wins; set => wins = value; }
+        public bool CanDodge { get => canDodge; set => canDodge = value; }
+        public bool CanFatigue { get => canFatigue; set => canFatigue = value; }
+        public int Parry { get => parry; set => parry = value; }
 
         public string FullName()
         {
             return Prefix.Name + " " + name + " " + Suffix.Name;
         }
-        public List<Equipment> AllEquipment()
+        public List<Equipment> AllEquipped()
         {
             List<Equipment> equipList = new List<Equipment> { EquippedHead, EquippedBody, EquippedArms, EquippedGloves, EquippedMainHand, EquippedOffHand, EquippedLegs, EquippedFeet };
             return equipList;
@@ -99,7 +100,7 @@ namespace DURPSBot
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
             int totalStrength = Strength;
-            foreach (Equipment e in AllEquipment())
+            foreach (Equipment e in AllEquipped())
             {
                 totalStrength += e.TotalStrength();
             }
@@ -109,7 +110,7 @@ namespace DURPSBot
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
             int totalIntelligence = Intelligence;
-            foreach (Equipment e in AllEquipment())
+            foreach (Equipment e in AllEquipped())
             {
                 totalIntelligence += e.TotalIntelligence();
             }
@@ -119,7 +120,7 @@ namespace DURPSBot
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
             int totalDexterity = Dexterity;
-            foreach (Equipment e in AllEquipment())
+            foreach (Equipment e in AllEquipped())
             {
                 totalDexterity += e.TotalDexterity();
             }
@@ -129,7 +130,7 @@ namespace DURPSBot
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
             int totalLuck = Luck;
-            foreach (Equipment e in AllEquipment())
+            foreach (Equipment e in AllEquipped())
             {
                 totalLuck += e.TotalLuck();
             }
@@ -139,7 +140,7 @@ namespace DURPSBot
         {
             // TODO: Add changes from all current status effects, entity suffixes, prefixes and traits
             int totalFate = Luck;
-            foreach (Equipment e in AllEquipment())
+            foreach (Equipment e in AllEquipped())
             {
                 totalFate += e.TotalFate();
             }
@@ -485,12 +486,12 @@ namespace DURPSBot
         {
             if (equipmentSlot is Items.Equipment.Empty == false)
             {
-                Inventory.Add(equipmentSlot);
+                InventoryEquipment.Add(equipmentSlot);
                 equipmentSlot = new Items.Equipment.Empty();
             }
             else
             {
-                Inventory.Add(equipmentSlot);
+                InventoryEquipment.Add(equipmentSlot);
             }
         }
         public void Equip(Equipment equipment)
@@ -557,12 +558,10 @@ namespace DURPSBot
         }
         public virtual void Die(PlayerCharacter killer)
         {
-            losses += 1;
             return;
         }
         public virtual void Die(Entity killer)
         {
-            losses += 1;
             return;
         }
     }

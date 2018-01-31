@@ -10,7 +10,7 @@ namespace DURPSBot
         public async Task EquipAsync([Remainder] [Summary("Inventory index of equipment")] string userString)
         {
             DataManager dm = new DataManager();
-            PlayerCharacter pc = dm.Load(Context.Message.Author.Discriminator);
+            PlayerCharacter pc = dm.Load(Context.Message.Author.Id);
             Equipment equipment;
 
             if (userString.ToLower() == "hand" || userString.ToLower() == "hands")

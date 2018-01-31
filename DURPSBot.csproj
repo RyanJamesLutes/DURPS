@@ -157,14 +157,18 @@
     <Compile Include="Items\Equipment\BrassKnuckles.cs" />
     <Compile Include="Items\Equipment\Mace.cs" />
     <Compile Include="Items\Equipment\Axe.cs" />
+    <Compile Include="Modules\InventoryModule.cs" />
     <Compile Include="Modules\UnequipModule.cs" />
     <Compile Include="Modules\EquipModule.cs" />
     <Compile Include="Modules\HelpModule.cs" />
     <Compile Include="Monster.cs" />
+    <Compile Include="Monsters\Zombie.cs" />
+    <Compile Include="Monsters\Unicorn.cs" />
     <Compile Include="Monsters\DireWolf.cs" />
     <Compile Include="Monsters\GiantRat.cs" />
     <Compile Include="PlayerCharacter.cs" />
     <Compile Include="EntityModifier.cs" />
+    <Compile Include="Shop.cs" />
     <Compile Include="StatusEffect.cs" />
     <Compile Include="Trait.cs" />
     <Compile Include="Modules\CreateCharacterModule.cs" />
@@ -183,6 +187,5 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

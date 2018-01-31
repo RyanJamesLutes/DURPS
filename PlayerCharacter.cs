@@ -6,38 +6,55 @@ namespace DURPSBot
     [Serializable]
     class PlayerCharacter : Entity
     {
-        private string characterClass;
-        private uint traitPoints;
-        private string fileVersion;
-        private ulong userID;
+        private string characterClass = "fool";
+        private uint traitPoints = 0;
+        private string fileVersion = "1.00";
+        private ulong userID = 0;
 
         private int killedGiantRats = 0;
         private int killedDireWolves = 0;
+        private int KilledUnicorns = 0;
+        private int killedZombies = 0;
+        private int wins = 0;
+        private int losses = 0;
 
         public uint TraitPoints { get => traitPoints; set => traitPoints = value; }
         public string FileVersion { get => fileVersion; set => fileVersion = value; }
+        public ulong UserID { get => userID; set => userID = value; }
         public int KilledGiantRats { get => killedGiantRats; set => killedGiantRats = value; }
         public int KilledDireWolves { get => killedDireWolves; set => killedDireWolves = value; }
-        public ulong UserID { get => userID; set => userID = value; }
+        public int KilledZombies { get => killedZombies; set => killedZombies = value; }
+        public int KilledUnicorns1 { get => KilledUnicorns; set => KilledUnicorns = value; }
+        public int Wins { get => wins; set => wins = value; }
+        public int Losses { get => losses; set => losses = value; }
+        public string CharacterClass { get => characterClass; set => characterClass = value; }
 
         public int TotalKills()
         {
-            int kills = KilledGiantRats + KilledDireWolves;
+            int kills = KilledGiantRats + KilledDireWolves + KilledUnicorns1 + KilledZombies;
             return kills;
         }
 
-        public PlayerCharacter(string cc)
+        public override void Die(Entity killer)
         {
-            Random rng = new Random();
+            losses -= 1;
+        }
 
-            characterClass = cc;
+        public PlayerCharacter(string cc, ulong uid, string n)
+        {
+            DataManager dm = new DataManager();
+            Random rng = new Random();
+            UserID = uid;
+            Name = n;
+
+            CharacterClass = cc;
             Level = 1;
             Experience = 0;
             CurrentHitPoints = MaxHitPoints;
             Speed = (Health + TotalDexterity()) / 2;
             FatiguePoints = Health;
 
-            if (characterClass == "Jack")
+            if (CharacterClass.ToLower() == "jack")
             {
                 Strength = 10;
                 Dexterity = 10;
@@ -47,7 +64,7 @@ namespace DURPSBot
 
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
-            else if (characterClass == "Warrior")
+            else if (CharacterClass.ToLower() == "warrior")
             {
                 Strength = rng.Next(10, 14);
                 Dexterity = rng.Next(8, 12);
@@ -58,7 +75,7 @@ namespace DURPSBot
                 EquippedMainHand = new Items.Equipment.Shortsword();
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
-            else if (characterClass == "Rogue")
+            else if (CharacterClass.ToLower() == "rogue")
             {
                 Strength = rng.Next(8, 12);
                 Dexterity = rng.Next(10, 14);
@@ -70,7 +87,7 @@ namespace DURPSBot
                 EquippedMainHand = new Items.Equipment.Dagger();
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
-            else if (characterClass == "Mage")
+            else if (CharacterClass.ToLower() == "mage")
             {
                 Strength = rng.Next(8, 12);
                 Dexterity = rng.Next(8, 12);
@@ -81,7 +98,7 @@ namespace DURPSBot
                 EquippedBody = new Items.Equipment.Robes();
                 EquippedFeet = new Items.Equipment.Sandals();
             }
-            else if (characterClass == "Fool")
+            else if (CharacterClass.ToLower() == "fool")
             {
                 Strength = 8;
                 Dexterity = 8;
@@ -91,7 +108,7 @@ namespace DURPSBot
 
                 EquippedHead = new Items.Equipment.JestersCap();
             }
-            else if (characterClass == "Wanderer")
+            else if (CharacterClass.ToLower() == "wanderer")
             {
                 Strength = 8;
                 Dexterity = 8;
@@ -106,6 +123,8 @@ namespace DURPSBot
             MaxHitPoints = TotalStrength();
             Perception = TotalIntelligence();
             Willpower = TotalIntelligence();
+
+            dm.Save(this);
         }
     }
 }

@@ -8,8 +8,8 @@ namespace DURPSBot
         private bool isWeapon = false;
         private bool isTwoHanded = false;
         private bool isRanged = false;
-        private EquipmentPrefix prefix;
-        private EquipmentSuffix suffix;
+        private EquipmentPrefix prefix = new EquipmentPrefix();
+        private EquipmentSuffix suffix = new EquipmentSuffix();
         private bool equipsToHead = false;
         private bool equipsToBody = false;
         private bool equipsToArms = false;

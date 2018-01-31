@@ -10,9 +10,9 @@ namespace DURPSBot
         public async Task EquipAsync([Remainder] [Summary("Inventory index of equipment")] int invIndex)
         {
             DataManager dm = new DataManager();
-            PlayerCharacter pc = dm.Load(Context.Message.Author.Discriminator);
-            Equipment equipment = pc.Inventory[invIndex + 1];
-            if (pc.Inventory.Count >= invIndex + 1)
+            PlayerCharacter pc = dm.Load(Context.Message.Author.Id);
+            Equipment equipment = pc.InventoryEquipment[invIndex + 1];
+            if (pc.InventoryEquipment.Count >= invIndex + 1)
             {
                 if (pc.MeetsRequirements(equipment))
                 {
