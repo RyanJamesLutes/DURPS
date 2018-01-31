@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using System.Timers;
 
 namespace DURPSBot
 {
@@ -13,15 +14,40 @@ namespace DURPSBot
         private CommandService _commands;
         private DiscordSocketClient _client;
         private IServiceProvider _services;
+        private static Timer aTimer;
 
         char commandPrefix = '!';
+        static int battleInterval = 60 * 1000 * 5; // in milliseconds
 
         private static void Main(string[] args)
         {
             new Program().StartAsync().GetAwaiter().GetResult();
+            // Create a timer with a ten second interval.
+            aTimer = new Timer(battleInterval);
 
-            // TODO: Create timer for battles.
+            // Hook up the Elapsed event for the timer.
+            aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            aTimer.Enabled = true;
+        }
 
+        private static void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            Console.WriteLine("{0} - Resolving battles...", e.SignalTime);
+            ResolveBattles();
+        }
+        private static void ResolveBattles()
+        {
+            DataManager dm = new DataManager();
+            ulong[] playerIDs = dm.AllPlayerIDs();
+            foreach (ulong id in playerIDs)
+            {
+                SocketUser user = new DiscordSocketClient().GetUser(id);
+                if (user.Status == UserStatus.Online)
+                {
+                    Battle battle = new Battle(dm.Load(id));
+                    battle.Fight();
+                }
+            }
         }
         public async Task StartAsync()
         {
@@ -65,20 +91,6 @@ namespace DURPSBot
             var result = await _commands.ExecuteAsync(context, argPos, _services);
             if (!result.IsSuccess)
                 await context.Channel.SendMessageAsync(result.ErrorReason);
-        }
-
-        private void DoAllBattles()
-        {
-            DataManager dm = new DataManager();
-            ulong[] playerIDs = dm.AllPlayerIDs();
-            foreach (ulong id in playerIDs)
-            {
-                var user = _client.GetUser(id);
-                if (user.Status == UserStatus.Online)
-                {
-                    // TODO: Do battle
-                }
-            }
         }
     }
 }

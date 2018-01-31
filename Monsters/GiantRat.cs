@@ -16,13 +16,15 @@ namespace DURPSBot.Monsters
             Dexterity = 13;
             Intelligence = 5;
             Health = 13;
+            CanDodge = true;
+            CanParry = false;
+            CanFatigue = true;
             Dodge = 7;
             MaxHitPoints = 9;
             CurrentHitPoints = MaxHitPoints;
             Willpower = 10;
             Perception = 12;
             FatiguePoints = 13;
-            CanParry = false;
             Move = 7;
             SizeModifier = -1;
             Speed = 6.5;

@@ -30,7 +30,7 @@ namespace DURPSBot
                         }
                         if (target.CurrentHitPoints <= target.MaxHitPoints)
                         {
-                            // TODO: Monster dies
+                            // Monster dies
                             target.Die(e);
                             turnOrder.Remove(target);
                         }
@@ -42,11 +42,15 @@ namespace DURPSBot
 
                         if (target.CurrentHitPoints <= target.MaxHitPoints)
                         {
-                            // TODO: Player dies
+                            // Player dies
+                            target.Die(e);
+                            return;
                         }
                     }
                 }
             }
+            TargetPlayer().Wins += 1;
+            return;
         }
 
         private Entity TargetMonster()
@@ -89,15 +93,78 @@ namespace DURPSBot
         {
             return turnOrder.OfType<PlayerCharacter>().First();
         }
+        private List<Entity> MonsterParty()
+        {
+            Random rng = new Random();
+            List<Entity> mList;
 
-        public Battle(PlayerCharacter pc, params Entity[] enemies)
+            switch (rng.Next(6))
+            {
+                default:
+                case 0:
+                    {
+                        mList = new List<Entity>()
+                        {
+                            new Monsters.GiantRat()
+                        };
+                        break;
+                    }
+                case 1:
+                    {
+                        mList = new List<Entity>()
+                        {
+                            new Monsters.GiantRat(), new Monsters.GiantRat(), new Monsters.GiantRat()
+                        };
+                        break;
+                    }
+                case 2:
+                    {
+                        mList = new List<Entity>()
+                        {
+                            new Monsters.DireWolf()
+                        };
+                        break;
+                    }
+                case 3:
+                    {
+                        mList = new List<Entity>()
+                        {
+                            new Monsters.DireWolf(), new Monsters.DireWolf(), new Monsters.DireWolf()
+                        };
+                        break;
+                    }
+                case 4:
+                    {
+                        mList = new List<Entity>()
+                        {
+                            new Monsters.Unicorn()
+                        };
+                        break;
+                    }
+                case 5:
+                    {
+                        mList = new List<Entity>()
+                        {
+                            new Monsters.Zombie()
+                        };
+                        break;
+                    }
+                case 6:
+                    {
+                        mList = new List<Entity>()
+                        {
+                            new Monsters.Zombie(), new Monsters.Zombie(), new Monsters.Zombie()
+                        };
+                        break;
+                    }
+            }
+            return mList;
+        }
+
+        public Battle(PlayerCharacter pc)
         {
             turnOrder.Add(pc);
-            for (int i = 0; i < enemies.Length; i++)
-            {
-                turnOrder.Add(enemies[i]);
-            }
-
+            turnOrder.AddRange(MonsterParty());
             turnOrder.Sort((a, b) =>
             {
                 return a.Speed.CompareTo(b.Speed);

@@ -13,17 +13,30 @@ namespace DURPSBot
 
         private int killedGiantRats = 0;
         private int killedDireWolves = 0;
+        private int KilledUnicorns = 0;
+        private int killedZombies = 0;
+        private int wins = 0;
+        private int losses = 0;
 
         public uint TraitPoints { get => traitPoints; set => traitPoints = value; }
         public string FileVersion { get => fileVersion; set => fileVersion = value; }
+        public ulong UserID { get => userID; set => userID = value; }
         public int KilledGiantRats { get => killedGiantRats; set => killedGiantRats = value; }
         public int KilledDireWolves { get => killedDireWolves; set => killedDireWolves = value; }
-        public ulong UserID { get => userID; set => userID = value; }
+        public int KilledZombies { get => killedZombies; set => killedZombies = value; }
+        public int KilledUnicorns1 { get => KilledUnicorns; set => KilledUnicorns = value; }
+        public int Wins { get => wins; set => wins = value; }
+        public int Losses { get => losses; set => losses = value; }
 
         public int TotalKills()
         {
-            int kills = KilledGiantRats + KilledDireWolves;
+            int kills = KilledGiantRats + KilledDireWolves + KilledUnicorns1 + KilledZombies;
             return kills;
+        }
+
+        public override void Die(Entity killer)
+        {
+            losses -= 1;
         }
 
         public PlayerCharacter(string cc)
