@@ -37,7 +37,8 @@ namespace DURPSBot
 
         public override void Die(Entity killer)
         {
-            losses -= 1;
+            losses += 1;
+            CurrentHitPoints = MaxHitPoints;
         }
 
         public PlayerCharacter(string cc, ulong uid, string n)

@@ -6,6 +6,7 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using System.Timers;
+using System.IO;
 
 namespace DURPSBot
 {
@@ -54,8 +55,8 @@ namespace DURPSBot
             _client = new DiscordSocketClient();
             _commands = new CommandService();
 
-            // TODO: Avoid hard coding your token. Use an external source instead in your code.
-            string token = "NDA4MTA3MDEwOTY2NDIxNTE1.DVLO1A.KCs36yYnjI4HvIP8wDDHkIrYmR4";
+            // Avoid hard coding your token. Use an external source instead in your code.
+            string token = File.ReadAllText("\\token.txt");
 
             _services = new ServiceCollection()
                 .AddSingleton(_client)

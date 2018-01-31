@@ -8,17 +8,45 @@ namespace DURPSBot
     {
         [Command("inv")]
         [Summary("Lists all items in a player's inventory.")]
+        public async Task InvAsync()
+        {
+            DataManager dm = new DataManager();
+            PlayerCharacter pc = dm.Load(Context.Message.Author.Id);
+            string invList = "";
+            if (pc.InventoryEquipment.Count > 0)
+            {
+                foreach (Equipment e in pc.InventoryEquipment)
+                {
+                    // TODO: Change to FullName when prefixes and suffixes are added
+                    invList = String.Concat(invList, (pc.InventoryEquipment.IndexOf(e) + 1) + ". " + e.Name + "\n");
+                }
+                await ReplyAsync(invList);
+            }
+            else
+            {
+                await ReplyAsync("Your inventory is empty!");
+            }
+        }
+        [Command("inventory")]
+        [Summary("Lists all items in a player's inventory.")]
         public async Task InventoryAsync()
         {
             DataManager dm = new DataManager();
             PlayerCharacter pc = dm.Load(Context.Message.Author.Id);
             string invList = "";
-            foreach (Equipment e in pc.InventoryEquipment)
+            if (pc.InventoryEquipment.Count > 0)
             {
-                // TODO: Change to FullName when prefixes and suffixes are added
-                invList = String.Concat(invList, (pc.InventoryEquipment.IndexOf(e) + 1) + ". " + e.Name + "\n");
+                foreach (Equipment e in pc.InventoryEquipment)
+                {
+                    // TODO: Change to FullName when prefixes and suffixes are added
+                    invList = String.Concat(invList, (pc.InventoryEquipment.IndexOf(e) + 1) + ". " + e.Name + "\n");
+                }
+                await ReplyAsync(invList);
             }
-            await ReplyAsync(invList);
+            else
+            {
+                await ReplyAsync("Your inventory is empty!");
+            }
         }
     }
 }
