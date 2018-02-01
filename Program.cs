@@ -56,7 +56,7 @@ namespace DURPSBot
             _commands = new CommandService();
 
             // Avoid hard coding your token. Use an external source instead in your code.
-            string token = File.ReadAllText("\\token.txt");
+            string token = File.ReadAllText(Directory.GetCurrentDirectory() + "\\token.txt");
 
             _services = new ServiceCollection()
                 .AddSingleton(_client)

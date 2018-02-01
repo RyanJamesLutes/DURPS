@@ -16,7 +16,7 @@ namespace DURPSBot
             foreach (Equipment e in pc.AllEquipped())
             {
                 // TODO: Change to FullName when prefixes and suffixes are added
-                equippedList = String.Concat(equippedList, (pc.AllEquipped().IndexOf(e) + 1) + ". " + e.Name + "\n");
+                equippedList = String.Concat(equippedList, (e.Name + "\n"));
             }
             await ReplyAsync(equippedList);
         }

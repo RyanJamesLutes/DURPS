@@ -157,6 +157,8 @@
     <Compile Include="Items\Equipment\BrassKnuckles.cs" />
     <Compile Include="Items\Equipment\Mace.cs" />
     <Compile Include="Items\Equipment\Axe.cs" />
+    <Compile Include="Modules\GoldModule.cs" />
+    <Compile Include="Modules\StatsModule.cs" />
     <Compile Include="Modules\EquipmentModule.cs" />
     <Compile Include="Modules\InventoryModule.cs" />
     <Compile Include="Modules\UnequipModule.cs" />

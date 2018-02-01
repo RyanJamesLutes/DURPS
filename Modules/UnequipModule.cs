@@ -6,7 +6,7 @@ namespace DURPSBot
     public class UnequipModule : ModuleBase<SocketCommandContext>
     {
         [Command("unequip")]
-        [Summary("Displays a list of commands.")]
+        [Summary("")]
         public async Task EquipAsync([Remainder] [Summary("Inventory index of equipment")] string userString)
         {
             DataManager dm = new DataManager();

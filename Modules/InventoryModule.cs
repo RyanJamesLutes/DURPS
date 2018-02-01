@@ -20,6 +20,7 @@ namespace DURPSBot
                     // TODO: Change to FullName when prefixes and suffixes are added
                     invList = String.Concat(invList, (pc.InventoryEquipment.IndexOf(e) + 1) + ". " + e.Name + "\n");
                 }
+                // TODO: List gold.
                 await ReplyAsync(invList);
             }
             else
