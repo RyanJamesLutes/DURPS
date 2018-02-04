@@ -102,7 +102,7 @@ namespace DURPSBot
                 EquippedBody = new Items.Equipment.Robes();
                 EquippedFeet = new Items.Equipment.Sandals();
             }
-            else if (CharacterClass.ToLower() == "wanderer")
+            else if (cc.ToLower() == "wanderer")
             {
                 CharacterClass = "Wanderer";
                 Strength = 8;
