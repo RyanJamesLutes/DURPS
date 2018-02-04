@@ -32,7 +32,7 @@ namespace DURPSBot.Monsters
             Description = "There’s little to be said about giant rats: they’re as cunning and dextrous as regular rats, but huge, the size of the children they carry off as food.Almost all dungeons have them – especially sewers.They’re fodder for well - equipped adventurers, but every now and then, 20 or 30 of them will get crazy and swarm a party anyway.";
         }
 
-        public void BattleAction(Entity target)
+        public override void BattleAction(Entity target)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))
@@ -42,7 +42,7 @@ namespace DURPSBot.Monsters
                     break;
             }
         }
-        public void BattleAction(Entity target, Equipment bodyPart)
+        public override void BattleAction(Entity target, Equipment bodyPart)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))

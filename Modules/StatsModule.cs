@@ -19,6 +19,7 @@ namespace DURPSBot
                            "STR: " + pc.Strength + "\n" +
                            "DEX: " + pc.Dexterity + "\n" +
                            "INT: " + pc.Intelligence + "\n" +
+                           "Kills: " + pc.TotalKills() + "\n" +
                            "Wins: " + pc.Wins + "\n" +
                            "Losses: " + pc.Losses + "\n";
 

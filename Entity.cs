@@ -557,11 +557,31 @@ namespace DURPSBot
                 return false;
             }
         }
-        public virtual void Die(PlayerCharacter killer)
+        public virtual void BattleAction(Entity target)
+        {
+            Random rng = new Random();
+            switch (rng.Next(1, 1))
+            {
+                case 1:
+                    UnarmedAttack(target);
+                    break;
+            }
+        }
+        public virtual void BattleAction(Entity target, Equipment bodyPart)
+        {
+            Random rng = new Random();
+            switch (rng.Next(1, 1))
+            {
+                case 1:
+                    UnarmedAttack(target, bodyPart);
+                    break;
+            }
+        }
+        public virtual void Die()
         {
             return;
         }
-        public virtual void Die(Entity killer)
+        public virtual void Die(PlayerCharacter killer)
         {
             return;
         }

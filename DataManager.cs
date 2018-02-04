@@ -12,15 +12,12 @@ namespace DURPSBot
         {
             string filePath = "PlayerData\\";
             List<ulong> userIDs = new List<ulong>();
-            DirectoryInfo d = new DirectoryInfo(filePath);
-
-            foreach (var file in d.GetFiles("*.bin"))
+            foreach (string file in Directory.GetFiles(filePath))
             {
-                // Remove ".bin" extension.
-                string s = file.Name.Remove(file.Name.Length - 4);
-                userIDs.Add(uint.Parse(s));
+                userIDs.Add(Load(Path.GetFileNameWithoutExtension(file)).UserID);
             }
             return userIDs.ToArray();
+
         }
 
         public void Save(PlayerCharacter pc)

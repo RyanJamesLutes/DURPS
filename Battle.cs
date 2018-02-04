@@ -8,58 +8,63 @@ namespace DURPSBot
 {
     class Battle
     {
-        // TODO: Create parties of monsters to encounter.
         private List<Entity> turnOrder = new List<Entity>();
+        DataManager dm = new DataManager();
+        PlayerCharacter player;
 
         public void Fight()
         {
-            while (turnOrder.Count > 1)
+            while (turnOrder.Contains(player))
             {
-                foreach (Entity e in turnOrder)
+                foreach (Entity e in turnOrder.ToList())
                 {
                     if (e is PlayerCharacter)
                     {
-                        Entity target = TargetMonster();
+                        if (turnOrder.Count == 1)
+                        {
+                            player.Wins += 1;
+                            dm.Save(player);
+                            return;
+                        }
+
+                        Entity t = TargetMonster();
                         if (e.EquippedMainHand is Items.Equipment.Empty)
                         {
-                            e.UnarmedAttack(target, TargetBodyPart(target));
+                            e.BattleAction(t, TargetBodyPart(t));
                         }
                         else
                         {
-                            e.EquippedMainHand.BattleAction(e, target);
-                        }
-                        if (target.CurrentHitPoints <= target.MaxHitPoints)
-                        {
-                            // Monster dies
-                            target.Die(e);
-                            turnOrder.Remove(target);
+                            e.EquippedMainHand.BattleAction(e, t);
                         }
                     }
-                    else if (e is Monster)
+                    else // e is Monster
                     {
-                        PlayerCharacter target = TargetPlayer();
-                        e.EquippedMainHand.BattleAction(e, target);
+                        e.BattleAction(player, TargetBodyPart(player));
+                    }
 
-                        if (target.CurrentHitPoints <= target.MaxHitPoints)
-                        {
-                            // Player dies
-                            target.Die(e);
-                            return;
-                        }
+                    if (player.CurrentHitPoints <= 0)
+                    {
+                        player.Die();
+                        turnOrder.Remove(player);
+                        dm.Save(player);
+                    }
+                    if (e.CurrentHitPoints <= 0)
+                    {
+                        e.Die(player);
+                        turnOrder.Remove(e);
+                        dm.Save(player);
                     }
                 }
             }
-            TargetPlayer().Wins += 1;
-            return;
         }
 
         private Entity TargetMonster()
         {
             Random rng = new Random();
-            Entity target = turnOrder[rng.Next(turnOrder.Count) - 1];
-            while (!(target is Monster))
+            Entity target = turnOrder[rng.Next(turnOrder.Count - 1)];
+            while (!( target is Monster))
             {
-                target = turnOrder[rng.Next(turnOrder.Count) - 1];
+                target = turnOrder[rng.Next(turnOrder.Count - 1)];
             }
             return target;
         }
@@ -88,10 +93,6 @@ namespace DURPSBot
                     return e.EquippedFeet;
             }
             return e.EquippedBody;
-        }
-        private PlayerCharacter TargetPlayer()
-        {
-            return turnOrder.OfType<PlayerCharacter>().First();
         }
         private List<Entity> MonsterParty()
         {
@@ -163,7 +164,8 @@ namespace DURPSBot
 
         public Battle(PlayerCharacter pc)
         {
-            turnOrder.Add(pc);
+            player = pc;
+            turnOrder.Add(player);
             turnOrder.AddRange(MonsterParty());
             turnOrder.Sort((a, b) =>
             {

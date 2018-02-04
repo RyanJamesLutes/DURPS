@@ -29,7 +29,7 @@ namespace DURPSBot.Monsters
             Description = "";
         }
 
-        public void BattleAction(Entity target)
+        public override void BattleAction(Entity target)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))
@@ -39,7 +39,7 @@ namespace DURPSBot.Monsters
                     break;
             }
         }
-        public void BattleAction(Entity target, Equipment bodyPart)
+        public override void BattleAction(Entity target, Equipment bodyPart)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))

@@ -32,7 +32,7 @@ namespace DURPSBot.Monsters
             Description = "Dire wolves are huge, strong, fast wolves with thick, wooly coats, keen senses, and a taste for human flesh. Tales of orcs using them as mounts are apocryphal – they’ll eat orcs, too. While one dire wolf might be no challenge for adventurers, they tend to occur in packs of up to 20.";
         }
 
-        public void BattleAction(Entity target)
+        public override void BattleAction(Entity target)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))
@@ -42,7 +42,7 @@ namespace DURPSBot.Monsters
                     break;
             }
         }
-        public void BattleAction(Entity target, Equipment bodyPart)
+        public override void BattleAction(Entity target, Equipment bodyPart)
         {
             Random rng = new Random();
             switch (rng.Next(1, 1))

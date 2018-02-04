@@ -1,4 +1,6 @@
-﻿namespace DURPSBot
+﻿using System;
+
+namespace DURPSBot
 {
     class Monster : Entity
     {

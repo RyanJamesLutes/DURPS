@@ -6,7 +6,7 @@ namespace DURPSBot
     [Serializable]
     class PlayerCharacter : Entity
     {
-        private string characterClass = "fool";
+        private string characterClass = "Fool";
         private uint traitPoints = 0;
         private string fileVersion = "1.00";
         private ulong userID = 0;
@@ -35,7 +35,7 @@ namespace DURPSBot
             return kills;
         }
 
-        public override void Die(Entity killer)
+        public override void Die()
         {
             losses += 1;
             CurrentHitPoints = MaxHitPoints;
@@ -48,15 +48,15 @@ namespace DURPSBot
             UserID = uid;
             Name = n;
 
-            CharacterClass = cc;
             Level = 1;
             Experience = 0;
             CurrentHitPoints = MaxHitPoints;
             Speed = (Health + TotalDexterity()) / 2;
             FatiguePoints = Health;
 
-            if (CharacterClass.ToLower() == "jack")
+            if (cc.ToLower() == "jack")
             {
+                CharacterClass = "Jack";
                 Strength = 10;
                 Dexterity = 10;
                 Intelligence = 10;
@@ -65,8 +65,9 @@ namespace DURPSBot
 
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
-            else if (CharacterClass.ToLower() == "warrior")
+            else if (cc.ToLower() == "warrior")
             {
+                CharacterClass = "Warrior";
                 Strength = rng.Next(10, 14);
                 Dexterity = rng.Next(8, 12);
                 Intelligence = rng.Next(8, 12);
@@ -76,8 +77,9 @@ namespace DURPSBot
                 EquippedMainHand = new Items.Equipment.Shortsword();
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
-            else if (CharacterClass.ToLower() == "rogue")
+            else if (cc.ToLower() == "rogue")
             {
+                CharacterClass = "Rogue";
                 Strength = rng.Next(8, 12);
                 Dexterity = rng.Next(10, 14);
                 Intelligence = rng.Next(8, 12);
@@ -88,8 +90,9 @@ namespace DURPSBot
                 EquippedMainHand = new Items.Equipment.Dagger();
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
-            else if (CharacterClass.ToLower() == "mage")
+            else if (cc.ToLower() == "mage")
             {
+                CharacterClass = "Mage";
                 Strength = rng.Next(8, 12);
                 Dexterity = rng.Next(8, 12);
                 Intelligence = rng.Next(10, 14);
@@ -99,18 +102,9 @@ namespace DURPSBot
                 EquippedBody = new Items.Equipment.Robes();
                 EquippedFeet = new Items.Equipment.Sandals();
             }
-            else if (CharacterClass.ToLower() == "fool")
-            {
-                Strength = 8;
-                Dexterity = 8;
-                Intelligence = 8;
-                Luck = 14;
-                Fate = rng.Next(1, 14);
-
-                EquippedHead = new Items.Equipment.JestersCap();
-            }
             else if (CharacterClass.ToLower() == "wanderer")
             {
+                CharacterClass = "Wanderer";
                 Strength = 8;
                 Dexterity = 8;
                 Intelligence = 8;
@@ -118,6 +112,17 @@ namespace DURPSBot
                 Fate = 14;
 
                 EquippedFeet = new Items.Equipment.LeatherBoots();
+            }
+            else
+            {
+                CharacterClass = "Fool";
+                Strength = 8;
+                Dexterity = 8;
+                Intelligence = 8;
+                Luck = 14;
+                Fate = rng.Next(1, 14);
+
+                EquippedHead = new Items.Equipment.JestersCap();
             }
 
             Health = rng.Next(8,12);
