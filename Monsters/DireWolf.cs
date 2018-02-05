@@ -76,8 +76,9 @@ namespace DURPSBot.Monsters
         }
         public override void Die(PlayerCharacter killer)
         {
-            killer.KilledDireWolves += 1;
-            return;
+            DataManager dm = new DataManager();
+            killer.KilledDireWolves ++;
+            dm.Save(killer);
         }
 
         // TODO: Traits, skills, etc.

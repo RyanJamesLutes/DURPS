@@ -35,10 +35,12 @@ namespace DURPSBot
             return kills;
         }
 
-        public override void Die()
+        public void Die()
         {
-            losses += 1;
+            DataManager dm = new DataManager();
+            Losses++;
             CurrentHitPoints = MaxHitPoints;
+            dm.Save(this);
         }
 
         public PlayerCharacter(string cc, ulong uid, string n)
@@ -113,6 +115,20 @@ namespace DURPSBot
 
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
+            else if (cc.ToLower() == "test")
+            {
+                CharacterClass = "test";
+                Strength = 255;
+                Dexterity = 255;
+                Intelligence = 255;
+                Luck = 255;
+                Fate = 255;
+
+                EquippedHead = new Items.Equipment.JestersCap();
+                EquippedBody = new Items.Equipment.Cloak();
+                EquippedMainHand = new Items.Equipment.Shortsword();
+                EquippedFeet = new Items.Equipment.LeatherBoots();
+            }
             else
             {
                 CharacterClass = "Fool";
@@ -126,6 +142,7 @@ namespace DURPSBot
             }
 
             Health = rng.Next(8,12);
+            CurrentHitPoints = TotalStrength();
             MaxHitPoints = TotalStrength();
             Perception = TotalIntelligence();
             Willpower = TotalIntelligence();

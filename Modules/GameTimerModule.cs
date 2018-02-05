@@ -14,7 +14,7 @@ namespace DURPSBot
         {
             DataManager dm = new DataManager();
             PlayerCharacter pc = dm.Load(Context.Message.Author.Id);
-            double timerInterval = 1000 * 60 * 30;
+            double timerInterval = 1000 * 5;
             Timer t = new Timer(timerInterval);
             t.Elapsed += T_Elapsed;
             t.Start();
@@ -25,18 +25,17 @@ namespace DURPSBot
 
         private void T_Elapsed(object sender, ElapsedEventArgs e)
         {
-            ResolveBattlesAsync();
+            ResolveBattles();
         }
 
-        private async void ResolveBattlesAsync()
+        private void ResolveBattles()
         {
             DataManager dm = new DataManager();
             ulong[] playerIDs = dm.AllPlayerIDs();
-            await ReplyAsync("Resolving battles...");
             foreach (ulong id in playerIDs)
             {
                 var user = Context.Client.GetUser(id);
-                if (user.Status == UserStatus.Online)
+                if (!(user.Status == UserStatus.Offline))
                 {
                     Battle battle = new Battle(dm.Load(id));
                     battle.Fight();

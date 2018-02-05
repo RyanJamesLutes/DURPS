@@ -51,8 +51,9 @@ namespace DURPSBot.Monsters
         }
         public override void Die(PlayerCharacter killer)
         {
-            killer.KilledUnicorns += 1;
-            return;
+            DataManager dm = new DataManager();
+            killer.KilledUnicorns ++;
+            dm.Save(killer);
         }
 
         // TODO: Traits, skills, etc.

@@ -463,6 +463,18 @@ namespace DURPSBot
             }
 
         }
+        public bool IsUnarmed()
+        {
+
+            foreach (Equipment eq in AllEquipped())
+            {
+                if (eq.IsWeapon)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public void UnarmedAttack(Entity target)
         {
             int penetratingDamage = BasicThrust() - (target.DamageResistance + target.EquippedBody.DamageResistance);
@@ -559,31 +571,29 @@ namespace DURPSBot
         }
         public virtual void BattleAction(Entity target)
         {
-            Random rng = new Random();
-            switch (rng.Next(1, 1))
+            if (IsUnarmed())
             {
-                case 1:
-                    UnarmedAttack(target);
-                    break;
+                UnarmedAttack(target);
+            }
+            else
+            {
+                EquippedMainHand.BattleAction(this, target);
             }
         }
         public virtual void BattleAction(Entity target, Equipment bodyPart)
         {
-            Random rng = new Random();
-            switch (rng.Next(1, 1))
+            if (IsUnarmed())
             {
-                case 1:
-                    UnarmedAttack(target, bodyPart);
-                    break;
+                UnarmedAttack(target, bodyPart);
             }
-        }
-        public virtual void Die()
-        {
-            return;
+            else
+            {
+                EquippedMainHand.BattleAction(this, target, bodyPart);
+            }
         }
         public virtual void Die(PlayerCharacter killer)
         {
-            return;
+
         }
     }
 }
