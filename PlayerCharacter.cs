@@ -115,20 +115,20 @@ namespace DURPSBot
 
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
-            else if (cc.ToLower() == "test")
-            {
-                CharacterClass = "test";
-                Strength = 255;
-                Dexterity = 255;
-                Intelligence = 255;
-                Luck = 255;
-                Fate = 255;
+            //else if (cc.ToLower() == "test")
+            //{
+            //    CharacterClass = "test";
+            //    Strength = 255;
+            //    Dexterity = 255;
+            //    Intelligence = 255;
+            //    Luck = 255;
+            //    Fate = 255;
 
-                EquippedHead = new Items.Equipment.JestersCap();
-                EquippedBody = new Items.Equipment.Cloak();
-                EquippedMainHand = new Items.Equipment.Shortsword();
-                EquippedFeet = new Items.Equipment.LeatherBoots();
-            }
+            //    EquippedHead = new Items.Equipment.JestersCap();
+            //    EquippedBody = new Items.Equipment.Cloak();
+            //    EquippedMainHand = new Items.Equipment.Shortsword();
+            //    EquippedFeet = new Items.Equipment.LeatherBoots();
+            //}
             else
             {
                 CharacterClass = "Fool";
