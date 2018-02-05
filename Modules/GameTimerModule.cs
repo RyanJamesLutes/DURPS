@@ -14,7 +14,7 @@ namespace DURPSBot
         {
             DataManager dm = new DataManager();
             PlayerCharacter pc = dm.Load(Context.Message.Author.Id);
-            double timerInterval = 1000 * 5;
+            double timerInterval = 1000 * 60 * 30;
             Timer t = new Timer(timerInterval);
             t.Elapsed += T_Elapsed;
             t.Start();
