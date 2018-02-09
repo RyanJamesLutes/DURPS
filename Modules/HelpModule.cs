@@ -1,6 +1,6 @@
-﻿using Discord.Commands;
+using Discord.Commands;
 using System.Threading.Tasks;
-
+using Discord;
 namespace DURPSBot
 {
     public class HelpModule : ModuleBase<SocketCommandContext>
@@ -10,7 +10,12 @@ namespace DURPSBot
         public async Task HelpAsync()
         {
             // ReplyAsync is a method on ModuleBase
-            await ReplyAsync("createcharacter \necho <message> \nequip <inventory #> \nequipment \ngold \nhelp \ninv \nunequip <slot> \nroll <dice notation> \nstats ");
+            var builder = new EmbedBuilder();
+
+            builder.WithTitle("DURPS Commands");
+            builder.WithDescription("createcharacter \necho <message> \nequip <inventory #> \nequipment \ngold \nhelp \ninv \nunequip <slot> \nroll <dice notation> \nstats ");
+
+            await Context.Channel.SendMessageAsync("", false, builder);
         }
     }
 }
