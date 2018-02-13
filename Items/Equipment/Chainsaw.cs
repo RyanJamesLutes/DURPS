@@ -3,21 +3,21 @@
 namespace DURPSBot.Items.Equipment
 {
     [Serializable]
-    class Axe : DURPSBot.Equipment
+    class Chainsaw : DURPSBot.Equipment
     {
-        // Page 65 of Low-Tech
-        public Axe()
+        // Page 274 of Basic Set
+        public Chainsaw()
         {
-            Name = "Axe";
+            Name = "Chainsaw";
             IsWeapon = true;
             EquipsToMainHand = true;
-            Price = 50;
-            Weight = 4;
-            Description = "A wedge-shaped blade on a wooden handle, not balanced for throwing.";
-            RequiredStrength = 11;
-            Damage = 2;
+            IsTwoHanded = true;
+            Price = 150;
+            Weight = 13;
+            Description = "A mechanical power-driven cutting tool with teeth set on a chain that moves around the edge of a blade. Groovy.";
+            RequiredStrength = 10;
             Reach = 1;
-            TechLevel = 0;
+            TechLevel = 6;
             ItemID = GenerateItemID();
         }
         public override void BattleAction(Entity owner, Entity target)
@@ -43,7 +43,7 @@ namespace DURPSBot.Items.Equipment
         public void Swing(Entity owner, Entity target)
         {
             Random rng = new Random();
-            int penetratingDamage = (owner.BasicSwing() + TotalDamage()) - (target.DamageResistance + target.EquippedBody.DamageResistance);
+            int penetratingDamage = (owner.BasicSwing() + rng.Next(1, 6) + TotalDamage()) - (target.DamageResistance + target.EquippedBody.DamageResistance);
             if (penetratingDamage < 0)
             {
                 penetratingDamage = 0;
@@ -54,7 +54,7 @@ namespace DURPSBot.Items.Equipment
         public void Swing(Entity owner, Entity target, DURPSBot.Equipment bodyPart)
         {
             Random rng = new Random();
-            int penetratingDamage = (owner.BasicSwing() + TotalDamage()) - (target.DamageResistance + bodyPart.DamageResistance);
+            int penetratingDamage = (owner.BasicSwing() + rng.Next(1, 6) + TotalDamage()) - (target.DamageResistance + target.EquippedBody.DamageResistance);
             if (penetratingDamage < 0)
             {
                 penetratingDamage = 0;

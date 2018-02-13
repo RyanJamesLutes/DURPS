@@ -65,6 +65,8 @@ namespace DURPSBot
                 Luck = rng.Next(1, 14);
                 Fate = rng.Next(1, 14);
 
+                EquippedArms = new Items.Equipment.ClothSleeves();
+                EquippedLegs = new Items.Equipment.LeatherPants();
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
             else if (cc.ToLower() == "warrior")
@@ -77,6 +79,8 @@ namespace DURPSBot
                 Fate = rng.Next(1, 14);
 
                 EquippedMainHand = new Items.Equipment.Shortsword();
+                EquippedArms = new Items.Equipment.BronzeArmbands();
+                EquippedLegs = new Items.Equipment.FurLoincloth();
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
             else if (cc.ToLower() == "rogue")
@@ -89,7 +93,9 @@ namespace DURPSBot
                 Fate = rng.Next(1, 14);
 
                 EquippedBody = new Items.Equipment.Cloak();
+                EquippedArms = new Items.Equipment.ClothSleeves();
                 EquippedMainHand = new Items.Equipment.Dagger();
+                EquippedLegs = new Items.Equipment.LeatherPants();
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
             else if (cc.ToLower() == "mage")
@@ -101,7 +107,10 @@ namespace DURPSBot
                 Luck = rng.Next(1, 14);
                 Fate = rng.Next(1, 14);
 
+                EquippedMainHand = new Items.Equipment.Quarterstaff();
                 EquippedBody = new Items.Equipment.Robes();
+                EquippedArms = new Items.Equipment.ClothSleeves();
+                EquippedLegs = new Items.Equipment.LeatherPants();
                 EquippedFeet = new Items.Equipment.Sandals();
             }
             else if (cc.ToLower() == "wanderer")
@@ -113,6 +122,9 @@ namespace DURPSBot
                 Luck = rng.Next(1, 14);
                 Fate = 14;
 
+                EquippedBody = new Items.Equipment.LeatherJacket();
+                EquippedArms = new Items.Equipment.ClothSleeves();
+                EquippedLegs = new Items.Equipment.LeatherPants();
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }
             //else if (cc.ToLower() == "test")
@@ -125,6 +137,7 @@ namespace DURPSBot
             //    Fate = 255;
 
             //    EquippedHead = new Items.Equipment.JestersCap();
+            //    EquippedArms = new Items.Equipment.ClothSleeves();
             //    EquippedBody = new Items.Equipment.Cloak();
             //    EquippedMainHand = new Items.Equipment.Shortsword();
             //    EquippedFeet = new Items.Equipment.LeatherBoots();
@@ -139,6 +152,8 @@ namespace DURPSBot
                 Fate = rng.Next(1, 14);
 
                 EquippedHead = new Items.Equipment.JestersCap();
+                EquippedArms = new Items.Equipment.ClothSleeves();
+                EquippedFeet = new Items.Equipment.ClownShoes();
             }
 
             Health = rng.Next(8,12);
