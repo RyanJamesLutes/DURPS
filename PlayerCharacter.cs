@@ -1,5 +1,7 @@
 ﻿using Discord.WebSocket;
 using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace DURPSBot
 {
@@ -9,7 +11,7 @@ namespace DURPSBot
         private string characterClass = "Fool";
         private uint traitPoints = 0;
         private string fileVersion = "1.00";
-        private ulong userID = 0;
+        private ulong userID;
 
         private int killedGiantRats = 0;
         private int killedDireWolves = 0;
@@ -145,9 +147,9 @@ namespace DURPSBot
             else
             {
                 CharacterClass = "Fool";
-                Strength = 8;
-                Dexterity = 8;
-                Intelligence = 8;
+                Strength = rng.Next(1, 14);
+                Dexterity = rng.Next(1, 14);
+                Intelligence = rng.Next(1, 14);
                 Luck = 14;
                 Fate = rng.Next(1, 14);
 

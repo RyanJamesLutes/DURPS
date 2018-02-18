@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace DURPSBot
 {
@@ -46,6 +47,9 @@ namespace DURPSBot
         private int parry = 0;
         private int move = 0;
 
+        [OptionalField]
+        private List<Spell> spells = new List<Spell>();
+
         // Inventory and equipment
         public Equipment EquippedHead { get => equippedHead; set => equippedHead = value; }
         public Equipment EquippedBody { get => equippedBody; set => equippedBody = value; }
@@ -87,6 +91,7 @@ namespace DURPSBot
         public bool CanDodge { get => canDodge; set => canDodge = value; }
         public bool CanFatigue { get => canFatigue; set => canFatigue = value; }
         public int Parry { get => parry; set => parry = value; }
+        internal List<Spell> Spells { get => spells; set => spells = value; }
 
         public string FullName()
         {
@@ -593,7 +598,6 @@ namespace DURPSBot
         }
         public virtual void Die(PlayerCharacter killer)
         {
-
         }
     }
 }

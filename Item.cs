@@ -16,6 +16,7 @@ namespace DURPSBot
         private string description;
         private bool dropsOnDeath;
         private double dropPercent;
+        private byte techLevel = 0;
 
         public string Name { get => name; set => name = value; }
         public double Weight { get => weight; set => weight = value; }
@@ -24,6 +25,7 @@ namespace DURPSBot
         public string Description { get => description; set => description = value; }
         public bool DropsOnDeath { get => dropsOnDeath; set => dropsOnDeath = value; }
         public double DropPercent { get => dropPercent; set => dropPercent = value; }
+        public byte TechLevel { get => techLevel; set => techLevel = value; }
 
         public string GenerateItemID()
         {

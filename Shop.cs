@@ -8,5 +8,8 @@ namespace DURPSBot
 {
     class Shop
     {
+        private List<Item> inventory = new List<Item>();
+
+        internal List<Item> Inventory { get => inventory; set => inventory = value; }
     }
 }

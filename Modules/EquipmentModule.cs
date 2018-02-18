@@ -12,12 +12,32 @@ namespace DURPSBot
         {
             DataManager dm = new DataManager();
             PlayerCharacter pc = dm.Load(Context.Message.Author.Id);
-            string equippedList = "";
-            foreach (Equipment e in pc.AllEquipped())
-            {
-                // TODO: Change to FullName when prefixes and suffixes are added
-                equippedList = String.Concat(equippedList, (e.Name + "\n"));
-            }
+            // TODO: Use FullName when modifiers are added.
+            string equippedList = "Head: " + pc.EquippedHead.Name + "\n" +
+                                  "Body: " + pc.EquippedBody.Name + "\n" +
+                                  "Arms: " + pc.EquippedArms.Name + "\n" +
+                                  "Gloves: " + pc.EquippedGloves.Name + "\n" +
+                                  "Main Hand: " + pc.EquippedMainHand.Name + "\n" +
+                                  "Off-hand: " + pc.EquippedOffHand.Name + "\n" +
+                                  "Legs: " + pc.EquippedLegs.Name + "\n" +
+                                  "Feet: " + pc.EquippedFeet.Name + "\n";
+            await ReplyAsync(equippedList);
+        }
+        [Command("gear")]
+        [Summary("Lists all equipped items.")]
+        public async Task Gear()
+        {
+            DataManager dm = new DataManager();
+            PlayerCharacter pc = dm.Load(Context.Message.Author.Id);
+            // TODO: Use FullName when modifiers are added.
+            string equippedList = "Head: " + pc.EquippedHead.Name + "\n" +
+                                  "Body: " + pc.EquippedBody.Name + "\n" +
+                                  "Arms: " + pc.EquippedArms.Name + "\n" +
+                                  "Gloves: " + pc.EquippedGloves.Name + "\n" +
+                                  "Main Hand: " + pc.EquippedMainHand.Name + "\n" +
+                                  "Off-hand: " + pc.EquippedOffHand.Name + "\n" +
+                                  "Legs: " + pc.EquippedLegs.Name + "\n" +
+                                  "Feet: " + pc.EquippedFeet.Name + "\n";
             await ReplyAsync(equippedList);
         }
     }

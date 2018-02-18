@@ -38,7 +38,6 @@ namespace DURPSBot
         private int rateOfFire = 0;
         private int shots = 0;
         private int reach = 0;
-        private byte techLevel = 0;
         private bool canParry = false;
 
         public bool IsWeapon { get => isWeapon; set => isWeapon = value; }
@@ -73,7 +72,6 @@ namespace DURPSBot
         public int RequiredLuck { get => requiredLuck; set => requiredLuck = value; }
         public int RequiredFate { get => requiredFate; set => requiredFate = value; }
         public int Reach { get => reach; set => reach = value; }
-        public byte TechLevel { get => techLevel; set => techLevel = value; }
         public bool CanParry { get => canParry; set => canParry = value; }
         public string DamageType { get => damageType; set => damageType = value; }
 

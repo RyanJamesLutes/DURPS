@@ -185,6 +185,7 @@
     <Compile Include="PlayerCharacter.cs" />
     <Compile Include="EntityModifier.cs" />
     <Compile Include="Shop.cs" />
+    <Compile Include="Spell.cs" />
     <Compile Include="StatusEffect.cs" />
     <Compile Include="Trait.cs" />
     <Compile Include="Modules\CreateCharacterModule.cs" />

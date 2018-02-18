@@ -82,17 +82,17 @@ namespace DURPSBot
             }
             return e.EquippedBody;
         }
-        private List<Entity> MonsterParty()
+        private List<Monster> MonsterParty()
         {
             Random rng = new Random();
-            List<Entity> mList;
+            List<Monster> mList;
 
             switch (rng.Next(6))
             {
                 default:
                 case 0:
                     {
-                        mList = new List<Entity>()
+                        mList = new List<Monster>()
                         {
                             new Monsters.GiantRat()
                         };
@@ -100,7 +100,7 @@ namespace DURPSBot
                     }
                 case 1:
                     {
-                        mList = new List<Entity>()
+                        mList = new List<Monster>()
                         {
                             new Monsters.GiantRat(), new Monsters.GiantRat(), new Monsters.GiantRat()
                         };
@@ -108,7 +108,7 @@ namespace DURPSBot
                     }
                 case 2:
                     {
-                        mList = new List<Entity>()
+                        mList = new List<Monster>()
                         {
                             new Monsters.DireWolf()
                         };
@@ -116,7 +116,7 @@ namespace DURPSBot
                     }
                 case 3:
                     {
-                        mList = new List<Entity>()
+                        mList = new List<Monster>()
                         {
                             new Monsters.DireWolf(), new Monsters.DireWolf(), new Monsters.DireWolf()
                         };
@@ -124,7 +124,7 @@ namespace DURPSBot
                     }
                 case 4:
                     {
-                        mList = new List<Entity>()
+                        mList = new List<Monster>()
                         {
                             new Monsters.Unicorn()
                         };
@@ -132,7 +132,7 @@ namespace DURPSBot
                     }
                 case 5:
                     {
-                        mList = new List<Entity>()
+                        mList = new List<Monster>()
                         {
                             new Monsters.Zombie()
                         };
@@ -140,7 +140,7 @@ namespace DURPSBot
                     }
                 case 6:
                     {
-                        mList = new List<Entity>()
+                        mList = new List<Monster>()
                         {
                             new Monsters.Zombie(), new Monsters.Zombie(), new Monsters.Zombie()
                         };

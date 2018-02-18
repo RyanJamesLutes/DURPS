@@ -10,7 +10,10 @@ namespace DURPSBot
         [Summary("Echoes a message.")]
         public async Task EchoAsync([Remainder] [Summary("The text to echo")] string echo)
         {
-            await ReplyAsync(echo);
+            if (!Context.Message.Author.IsBot)
+            {
+                await ReplyAsync(echo);
+            }
         }
     }
 }
