@@ -16,7 +16,6 @@ namespace DURPSBot
 
         public void Stock()
         {
-            rng = new Random(-Int32.Parse(DateTime.Now.Date.ToString()));
             List<Equipment> toStock = new List<Equipment>()
         {
             new Blackjack(),
@@ -40,13 +39,14 @@ namespace DURPSBot
 
             while (InStock.Count < 8)
             {
-                InStock.Add(toStock[rng.Next(inStock.Count - 1)]);
+                InStock.Add(toStock[rng.Next(toStock.Count - 1)]);
             }
 
         }
 
         public Shop()
         {
+            rng = new Random(0 - Int32.Parse(DateTime.Now.Date.ToString("ddMMyy")));
             Stock();
             foreach (Equipment e in InStock)
             {

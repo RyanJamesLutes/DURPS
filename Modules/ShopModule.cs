@@ -12,18 +12,18 @@ namespace DURPSBot
         public async Task ShopAsync()
         {
             Shop shop = new Shop();
-            string s = "";
+            StringBuilder sb = new StringBuilder();
 
             foreach (Equipment e in shop.InStock)
             {
                 // TODO: use FullName and total attributes when modifiers are added. Add checks for other requirements.
-                s += (shop.InStock.IndexOf(e) + 1) + ". " + e.Name + " - " + "Price: " + e.Price + " Req. STR: " + e.RequiredStrength + "\n";
+                sb.AppendLine((shop.InStock.IndexOf(e) + 1) + ". " + e.Name + " - " + "Price: " + e.Price + " Req. STR: " + e.RequiredStrength);
             }
-            await ReplyAsync(s);
+            await ReplyAsync(sb.ToString());
         }
 
         [Command("buy")]
-        [Summary("Buys an item from the shop")]
+        [Summary("Buy an item from the shop.")]
         public async Task BuyAsync([Remainder] [Summary("Item to buy.")] string selection)
         {
             DataManager dm = new DataManager();
