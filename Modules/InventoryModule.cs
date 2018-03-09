@@ -28,6 +28,7 @@ namespace DURPSBot
                 await ReplyAsync("Your inventory is empty!");
             }
         }
+
         [Command("inventory")]
         [Summary("Lists all items in a player's inventory.")]
         public async Task InventoryAsync()

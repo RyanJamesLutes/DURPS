@@ -45,3 +45,4 @@ C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Release\DURPSBot.csprojResolveA
 C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Release\DURPSBot.csproj.CoreCompileInputs.cache
 C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Release\DURPSBot.exe
 C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Release\DURPSBot.pdb
+C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Release\DURPSBot.csproj.CopyComplete

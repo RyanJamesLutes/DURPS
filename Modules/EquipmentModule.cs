@@ -25,7 +25,7 @@ namespace DURPSBot
         }
         [Command("gear")]
         [Summary("Lists all equipped items.")]
-        public async Task Gear()
+        public async Task GearAsync()
         {
             DataManager dm = new DataManager();
             PlayerCharacter pc = dm.Load(Context.Message.Author.Id);
