@@ -39,6 +39,7 @@ namespace DURPSBot
             {
                 pc.InventoryEquipment.Add(shop.InStock[selectionNum - 1]);
                 pc.Money -= shop.InStock[selectionNum - 1].Price;
+                dm.Save(pc);
                 await ReplyAsync("Purchased.");
             }
             else if (pc.Money < shop.InStock[selectionNum - 1].Price)
