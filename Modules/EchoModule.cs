@@ -1,4 +1,4 @@
-﻿using Discord.Commands;
+using Discord.Commands;
 using System.Threading.Tasks;
 
 namespace DURPSBot
@@ -10,10 +10,7 @@ namespace DURPSBot
         [Summary("Echoes a message.")]
         public async Task EchoAsync([Remainder] [Summary("The text to echo")] string echo)
         {
-            if (!Context.Message.Author.IsBot)
-            {
-                await ReplyAsync(echo);
-            }
+            await ReplyAsync(echo);
         }
     }
 }

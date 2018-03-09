@@ -61,6 +61,8 @@ namespace DURPSBot
             if (!(message.HasCharPrefix(commandPrefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
             // Create a Command Context
             var context = new SocketCommandContext(_client, message);
+            // Check for DURPS unwittingly sending commands so he doesn't parse them. 
+            if (message.Author.ToString() == "DURPS#9790") return; 
             // Execute the command. (result does not indicate a return value, 
             // rather an object stating if the command executed successfully)
             var result = await _commands.ExecuteAsync(context, argPos, _services);
