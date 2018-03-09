@@ -81,7 +81,6 @@ namespace DURPSBot
                 Fate = rng.Next(1, 14);
 
                 EquippedMainHand = new Items.Equipment.Shortsword();
-                EquippedArms = new Items.Equipment.BronzeArmbands();
                 EquippedLegs = new Items.Equipment.FurLoincloth();
                 EquippedFeet = new Items.Equipment.LeatherBoots();
             }

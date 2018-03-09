@@ -24,7 +24,6 @@ namespace DURPSBot
         {
             DataManager dm = new DataManager();
             ResolveBattles();
-            Context.Client.SetGameAsync("Online: " + OnlinePlayers().ToString(), "", 0);
         }
 
         private void ResolveBattles()

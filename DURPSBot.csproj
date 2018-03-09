@@ -169,6 +169,7 @@
     <Compile Include="Items\Equipment\Blackjack.cs" />
     <Compile Include="Items\Equipment\BrassKnuckles.cs" />
     <Compile Include="Items\Equipment\Mace.cs" />
+    <Compile Include="Modules\ShopModule.cs" />
     <Compile Include="Modules\GameTimerModule.cs" />
     <Compile Include="Modules\GoldModule.cs" />
     <Compile Include="Modules\StatsModule.cs" />
