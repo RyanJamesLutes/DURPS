@@ -24,27 +24,49 @@ namespace DURPSBot
 
         [Command("buy")]
         [Summary("Buy an item from the shop.")]
-        public async Task BuyAsync([Remainder] [Summary("Item to buy.")] string selection)
+        public async Task BuyAsync([Remainder] [Summary("Item to buy.")] int selection)
         {
             DataManager dm = new DataManager();
             PlayerCharacter pc = dm.Load(Context.Message.Author.Id);
             Shop shop = new Shop();
-            int selectionNum = Int32.Parse(selection);
 
-            if (selectionNum <= 0 || selectionNum > shop.InStock.Count)
+            if (selection <= 0 || selection > shop.InStock.Count)
             {
                 await ReplyAsync("Invalid selection.");
             }
-            else if (pc.Money >= shop.InStock[selectionNum - 1].Price)
+            else if (pc.Money >= shop.InStock[selection - 1].Price)
             {
-                pc.InventoryEquipment.Add(shop.InStock[selectionNum - 1]);
-                pc.Money -= shop.InStock[selectionNum - 1].Price;
+                pc.InventoryEquipment.Add(shop.InStock[selection - 1]);
+                pc.Money -= shop.InStock[selection - 1].Price;
                 dm.Save(pc);
                 await ReplyAsync("Purchased.");
             }
-            else if (pc.Money < shop.InStock[selectionNum - 1].Price)
+            else if (pc.Money < shop.InStock[selection - 1].Price)
             {
                 await ReplyAsync("Not enough funds!");
+            }
+        }
+
+        [Command("sell")]
+        [Summary("Sell an item to the shop.")]
+        public async Task SellAsync([Remainder] [Summary("Item to buy.")] int selection)
+        {
+            DataManager dm = new DataManager();
+            PlayerCharacter pc = dm.Load(Context.Message.Author.Id);
+            Shop shop = new Shop();
+
+            if (selection <= 0 || selection > pc.InventoryEquipment.Count)
+            {
+                await ReplyAsync("Invalid selection.");
+            }
+            // TODO: Use totals.
+            else
+            {
+                int sellPrice = pc.InventoryEquipment[selection - 1].Price;
+                pc.Money += sellPrice;
+                pc.InventoryEquipment.RemoveAt(selection - 1);
+                dm.Save(pc);
+                await ReplyAsync("Sold for " + sellPrice + " gold.");
             }
         }
     }

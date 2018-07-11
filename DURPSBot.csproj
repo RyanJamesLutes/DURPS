@@ -169,13 +169,14 @@
     <Compile Include="Items\Equipment\Blackjack.cs" />
     <Compile Include="Items\Equipment\BrassKnuckles.cs" />
     <Compile Include="Items\Equipment\Mace.cs" />
+    <Compile Include="Modules\AskYourDentistModule.cs" />
+    <Compile Include="Modules\RollModule.cs" />
     <Compile Include="Modules\ShopModule.cs" />
     <Compile Include="Modules\GameTimerModule.cs" />
     <Compile Include="Modules\GoldModule.cs" />
     <Compile Include="Modules\StatsModule.cs" />
     <Compile Include="Modules\EquipmentModule.cs" />
     <Compile Include="Modules\InventoryModule.cs" />
-    <Compile Include="Modules\UnequipModule.cs" />
     <Compile Include="Modules\EquipModule.cs" />
     <Compile Include="Modules\HelpModule.cs" />
     <Compile Include="Monster.cs" />
@@ -187,11 +188,13 @@
     <Compile Include="EntityModifier.cs" />
     <Compile Include="Shop.cs" />
     <Compile Include="Spell.cs" />
+    <Compile Include="Spells\WaterJet.cs" />
+    <Compile Include="Spells\FlameJet.cs" />
+    <Compile Include="Status Effects\OnFire.cs" />
     <Compile Include="StatusEffect.cs" />
     <Compile Include="Trait.cs" />
     <Compile Include="Modules\CreateCharacterModule.cs" />
     <Compile Include="Modules\EchoModule.cs" />
-    <Compile Include="Modules\RollModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

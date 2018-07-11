@@ -41,8 +41,8 @@ C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\bin\Release\Newtonsoft.Json.xml
 C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\bin\Release\System.Collections.Immutable.xml
 C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\bin\Release\System.Diagnostics.DiagnosticSource.xml
 C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\bin\Release\System.Interactive.Async.xml
-C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Release\DURPSBot.csprojResolveAssemblyReference.cache
 C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Release\DURPSBot.csproj.CoreCompileInputs.cache
 C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Release\DURPSBot.exe
 C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Release\DURPSBot.pdb
 C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Release\DURPSBot.csproj.CopyComplete
+C:\Users\Ryan\Source\Repos\DURPSBot\DURPSBot\obj\Release\DURPSBot.csprojAssemblyReference.cache

@@ -17,7 +17,7 @@ namespace DURPSBot
         private DiscordSocketClient _client;
         private IServiceProvider _services;
 
-        char commandPrefix = '!';
+        string commandPrefix = "!";
 
         private static void Main(string[] args)
         {
@@ -58,7 +58,7 @@ namespace DURPSBot
             // Create a number to track where the prefix ends and the command begins
             int argPos = 0;
             // Determine if the message is a command, based on if it starts with '!' or a mention prefix
-            if (!(message.HasCharPrefix(commandPrefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
+            if (!(message.HasStringPrefix(commandPrefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
             // Create a Command Context
             var context = new SocketCommandContext(_client, message);
             // Check for DURPS unwittingly sending commands so he doesn't parse them. 

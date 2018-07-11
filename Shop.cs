@@ -41,18 +41,17 @@ namespace DURPSBot
             {
                 InStock.Add(toStock[rng.Next(toStock.Count - 1)]);
             }
-
+            foreach (Equipment e in InStock)
+            {
+                // TODO: Use totals when modifiers are added.
+                e.Price *= 1 + (e.TechLevel / 10) + (rng.Next(25) / 100);
+            }
         }
 
         public Shop()
         {
             rng = new Random(0 - Int32.Parse(DateTime.Now.Date.ToString("ddMMyy")));
             Stock();
-            foreach (Equipment e in InStock)
-            {
-                // TODO: Use totals when modifiers are added.
-                e.Price *= 1 + (rng.Next(25) / 100);
-            }
         }
     }
 }

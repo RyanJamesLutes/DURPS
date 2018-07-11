@@ -33,7 +33,7 @@ namespace DURPSBot
         private Equipment equippedFeet = new Items.Equipment.Empty();
         private List<Equipment> inventoryEquipment = new List<Equipment>();
         private long money = 0;
-        private double speed = 0; // Default = (Health + Dextirity) / 2
+        private double speed = 0; // Default = (Health + Dexterity) / 2
         private int fatiguePoints = 0;
         private int health = 0;
         private int willpower = 0;
@@ -49,6 +49,8 @@ namespace DURPSBot
 
         [OptionalField]
         private List<Spell> spells = new List<Spell>();
+        [OptionalField]
+        private string collegeFocus = "";
 
         // Inventory and equipment
         public Equipment EquippedHead { get => equippedHead; set => equippedHead = value; }
@@ -507,10 +509,6 @@ namespace DURPSBot
                 InventoryEquipment.Add(equipmentSlot);
                 equipmentSlot = new Items.Equipment.Empty();
             }
-            else
-            {
-                InventoryEquipment.Add(equipmentSlot);
-            }
         }
         public void Equip(Equipment equipment)
         {
@@ -524,36 +522,43 @@ namespace DURPSBot
                     }
                     Unequip(EquippedMainHand);
                     EquippedMainHand = equipment;
+                    InventoryEquipment.Remove(equipment);
                 }
                 else if (equipment.EquipsToOffHand)
                 {
                     Unequip(EquippedOffHand);
                     EquippedOffHand = equipment;
+                    InventoryEquipment.Remove(equipment);
                 }
                 else if (equipment.EquipsToBody)
                 {
                     Unequip(EquippedBody);
                     EquippedBody = equipment;
+                    InventoryEquipment.Remove(equipment);
                 }
                 else if (equipment.EquipsToArms)
                 {
                     Unequip(EquippedArms);
                     EquippedArms = equipment;
+                    InventoryEquipment.Remove(equipment);
                 }
                 else if (equipment.EquipsToGloves)
                 {
                     Unequip(EquippedGloves);
                     EquippedGloves = equipment;
+                    InventoryEquipment.Remove(equipment);
                 }
                 else if (equipment.EquipsToLegs)
                 {
                     Unequip(EquippedLegs);
                     EquippedLegs = equipment;
+                    InventoryEquipment.Remove(equipment);
                 }
                 else if (equipment.EquipsToFeet)
                 {
                     Unequip(EquippedFeet);
                     EquippedFeet = equipment;
+                    InventoryEquipment.Remove(equipment);
                 }
             }
         }
@@ -576,6 +581,7 @@ namespace DURPSBot
         }
         public virtual void BattleAction(Entity target)
         {
+            // TODO: Spellcasting
             if (IsUnarmed())
             {
                 UnarmedAttack(target);
@@ -587,6 +593,7 @@ namespace DURPSBot
         }
         public virtual void BattleAction(Entity target, Equipment bodyPart)
         {
+            // TODO: Spellcasting
             if (IsUnarmed())
             {
                 UnarmedAttack(target, bodyPart);
